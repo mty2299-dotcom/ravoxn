@@ -1,0 +1,2730 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RAVOXN — Raven Military Sector</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050505;
+    --bg2:#090909;
+    --panel:#0d0d0d;
+    --panel2:#111111;
+    --border:#242424;
+    --border2:#333;
+    --text:#f1f1f1;
+    --muted:#777;
+    --dim:#444;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,255,255,.075),
+            transparent 32%
+        );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    opacity:.035;
+
+    background-image:
+        linear-gradient(#fff 1px,transparent 1px),
+        linear-gradient(90deg,#fff 1px,transparent 1px);
+
+    background-size:80px 80px;
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:min(1180px,92%);
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+
+    background:rgba(8,8,8,.82);
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    z-index:1000;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35);
+}
+
+.logo{
+    color:#eee;
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:5px;
+}
+
+.logo span{
+    color:#555;
+}
+
+.nav{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav a{
+    color:#666;
+    font-size:11px;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.nav a:hover{
+    color:#fff;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 13px;
+
+    color:#666;
+    background:#0d0d0d;
+
+    border:1px solid #242424;
+    border-radius:9px;
+
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+.status i{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#aaa;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.5);
+
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:.35;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+.menu{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    background:#0d0d0d;
+    color:#aaa;
+
+    border:1px solid #292929;
+    border-radius:9px;
+
+    font-size:17px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:150px 20px 100px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-light{
+    position:absolute;
+
+    width:750px;
+    height:750px;
+
+    top:-500px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.11),
+            transparent 68%
+        );
+
+    animation:lightMove 7s ease-in-out infinite alternate;
+}
+
+@keyframes lightMove{
+    from{
+        transform:translateX(-50%) scale(1);
+    }
+
+    to{
+        transform:translateX(-50%) scale(1.15);
+    }
+}
+
+.hero-content{
+    width:min(1000px,100%);
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    padding:11px 17px;
+
+    color:#777;
+    background:#0b0b0b;
+
+    border:1px solid #292929;
+    border-radius:50px;
+
+    font-size:8px;
+    letter-spacing:3px;
+
+    animation:fadeDown .8s ease both;
+}
+
+.badge i{
+    width:6px;
+    height:6px;
+
+    background:#aaa;
+    border-radius:50%;
+}
+
+.hero h1{
+    margin-top:38px;
+
+    font-size:clamp(85px,16vw,190px);
+    line-height:.78;
+
+    font-weight:950;
+    letter-spacing:-12px;
+
+    animation:heroTitle 1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero h1 span{
+    color:#404040;
+}
+
+@keyframes heroTitle{
+    from{
+        opacity:0;
+        transform:translateY(45px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.subtitle{
+    margin-top:34px;
+
+    color:#777;
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    animation:fadeUp 1s .15s both;
+}
+
+.subtitle b{
+    color:#eee;
+}
+
+.description{
+    max-width:680px;
+
+    margin:20px auto 0;
+
+    color:#5e5e5e;
+
+    font-size:14px;
+    line-height:2;
+
+    animation:fadeUp 1s .25s both;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+
+    margin-top:38px;
+
+    animation:fadeUp 1s .35s both;
+}
+
+.btn{
+    position:relative;
+    overflow:hidden;
+
+    min-width:245px;
+    height:64px;
+
+    padding:0 30px;
+
+    border-radius:13px;
+
+    font-size:12px;
+    font-weight:800;
+
+    transition:
+        transform .3s,
+        border-color .3s,
+        background .3s,
+        box-shadow .3s;
+
+    cursor:pointer;
+}
+
+.btn::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.09),
+            transparent
+        );
+
+    transition:.6s;
+}
+
+.btn:hover::before{
+    left:120%;
+}
+
+.primary{
+    color:#fff;
+    background:#111;
+    border:1px solid #3a3a3a;
+
+    box-shadow:
+        0 0 0 rgba(255,255,255,0);
+}
+
+.primary:hover{
+    transform:translateY(-6px);
+
+    background:#171717;
+    border-color:#777;
+
+    box-shadow:
+        0 15px 45px rgba(255,255,255,.08),
+        inset 0 0 20px rgba(255,255,255,.025);
+}
+
+.secondary{
+    color:#888;
+    background:#080808;
+    border:1px solid #242424;
+}
+
+.secondary:hover{
+    color:#eee;
+
+    transform:translateY(-6px);
+
+    border-color:#555;
+
+    background:#101010;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.5);
+}
+
+/* ================= HERO INFO ================= */
+
+.hero-info{
+    width:min(700px,100%);
+
+    margin:55px auto 0;
+    padding-top:27px;
+
+    display:flex;
+
+    border-top:1px solid #181818;
+
+    animation:fadeUp 1s .45s both;
+}
+
+.hero-info div{
+    flex:1;
+    position:relative;
+}
+
+.hero-info div:not(:last-child)::after{
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    top:50%;
+
+    width:1px;
+    height:25px;
+
+    transform:translateY(-50%);
+
+    background:#252525;
+}
+
+.hero-info strong{
+    display:block;
+
+    color:#aaa;
+
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.hero-info small{
+    display:block;
+
+    margin-top:5px;
+
+    color:#444;
+
+    font-size:8px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    width:min(1150px,90%);
+    margin:auto;
+
+    padding:120px 0;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:55px;
+
+    opacity:0;
+    transform:translateY(35px);
+
+    transition:
+        opacity .8s,
+        transform .8s;
+}
+
+.section-head.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section-head small{
+    color:#505050;
+
+    font-size:8px;
+    letter-spacing:4px;
+}
+
+.section-head h2{
+    margin-top:14px;
+
+    font-size:44px;
+}
+
+.section-head p{
+    margin-top:13px;
+
+    color:#555;
+
+    font-size:13px;
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= OVERVIEW ================= */
+
+.overview{
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:15px;
+}
+
+.overview-main{
+    min-height:390px;
+
+    padding:48px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            #252525,
+            transparent 38%
+        ),
+        #0b0b0b;
+
+    border:1px solid #222;
+    border-radius:21px;
+
+    transition:.4s;
+}
+
+.overview-main:hover{
+    transform:translateY(-6px);
+
+    border-color:#3b3b3b;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.4);
+}
+
+.overview-main::after{
+    content:"R";
+
+    position:absolute;
+
+    right:-20px;
+    bottom:-150px;
+
+    font-size:360px;
+    font-weight:950;
+
+    color:rgba(255,255,255,.018);
+}
+
+.label{
+    color:#555;
+
+    font-size:8px;
+    letter-spacing:3px;
+}
+
+.overview-main h3{
+    position:relative;
+    z-index:2;
+
+    margin-top:18px;
+
+    font-size:33px;
+}
+
+.overview-main p{
+    position:relative;
+    z-index:2;
+
+    max-width:650px;
+
+    margin-top:18px;
+
+    color:#666;
+
+    font-size:14px;
+    line-height:2;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.card{
+    padding:30px;
+
+    background:#0b0b0b;
+
+    border:1px solid #202020;
+    border-radius:17px;
+
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.015);
+
+    background:#111;
+
+    border-color:#444;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.4);
+}
+
+.card strong{
+    font-size:30px;
+}
+
+.card span{
+    margin-top:7px;
+
+    color:#555;
+
+    font-size:9px;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.feature{
+    min-height:230px;
+
+    padding:32px;
+
+    background:#0b0b0b;
+
+    border:1px solid #202020;
+    border-radius:18px;
+
+    transition:.35s;
+}
+
+.feature:hover{
+    transform:translateY(-9px);
+
+    background:#101010;
+
+    border-color:#414141;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.45);
+}
+
+.icon{
+    width:52px;
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:22px;
+
+    background:#151515;
+
+    border:1px solid #292929;
+    border-radius:13px;
+
+    font-size:19px;
+
+    transition:.35s;
+}
+
+.feature:hover .icon{
+    transform:rotate(-5deg) scale(1.08);
+
+    background:#1c1c1c;
+
+    border-color:#555;
+}
+
+.feature h3{
+    font-size:17px;
+}
+
+.feature p{
+    margin-top:11px;
+
+    color:#606060;
+
+    font-size:12px;
+    line-height:1.9;
+}
+
+/* ================= STRUCTURE ================= */
+
+.structure{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:15px;
+}
+
+.command-box,
+.command-table{
+    background:#0b0b0b;
+
+    border:1px solid #222;
+    border-radius:20px;
+}
+
+.command-box{
+    padding:42px;
+}
+
+.command-box h3{
+    margin-top:15px;
+
+    font-size:29px;
+}
+
+.command-box p{
+    margin-top:14px;
+
+    color:#666;
+
+    font-size:13px;
+    line-height:2;
+}
+
+.command-list{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+
+    margin-top:27px;
+}
+
+.command-list div{
+    display:flex;
+    justify-content:space-between;
+
+    padding:15px;
+
+    background:#101010;
+
+    border:1px solid #1d1d1d;
+    border-radius:9px;
+
+    transition:.25s;
+}
+
+.command-list div:hover{
+    border-color:#3d3d3d;
+    transform:translateX(-4px);
+}
+
+.command-list b{
+    color:#aaa;
+    font-size:10px;
+}
+
+.command-list span{
+    color:#555;
+    font-size:10px;
+}
+
+.command-table{
+    overflow:hidden;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+
+    padding:20px 23px;
+
+    border-bottom:1px solid #191919;
+
+    color:#666;
+
+    font-size:10px;
+}
+
+.row:last-child{
+    border-bottom:0;
+}
+
+.row.header{
+    background:#101010;
+    color:#555;
+
+    letter-spacing:2px;
+}
+
+.row b{
+    color:#aaa;
+}
+
+/* ================= TEAM ================= */
+
+.team{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.member{
+    padding:42px 28px;
+
+    text-align:center;
+
+    background:#0b0b0b;
+
+    border:1px solid #202020;
+    border-radius:20px;
+
+    transition:.35s;
+}
+
+.member:hover{
+    transform:translateY(-9px);
+
+    background:#101010;
+
+    border-color:#414141;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #292929,
+            #080808
+        );
+
+    border:1px solid #444;
+
+    font-size:27px;
+    font-weight:900;
+
+    transition:.35s;
+}
+
+.member:hover .avatar{
+    transform:scale(1.08);
+
+    border-color:#777;
+
+    box-shadow:
+        0 0 35px rgba(255,255,255,.07);
+}
+
+.member h3{
+    margin-top:19px;
+    font-size:20px;
+}
+
+.role{
+    margin-top:7px;
+
+    color:#777;
+
+    font-size:8px;
+    letter-spacing:3px;
+}
+
+.member p{
+    margin-top:14px;
+
+    color:#5f5f5f;
+
+    font-size:12px;
+    line-height:1.8;
+}
+
+.tag{
+    display:inline-block;
+
+    margin-top:19px;
+    padding:7px 12px;
+
+    color:#777;
+
+    background:#0e0e0e;
+
+    border:1px solid #292929;
+    border-radius:50px;
+
+    font-size:7px;
+}
+
+/* ================= RAVEN ================= */
+
+.raven{
+    min-height:420px;
+
+    padding:58px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            #242424,
+            transparent 40%
+        ),
+        #090909;
+
+    border:1px solid #292929;
+    border-radius:23px;
+
+    transition:.4s;
+}
+
+.raven:hover{
+    border-color:#444;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45);
+}
+
+.raven::after{
+    content:"RAVEN";
+
+    position:absolute;
+
+    right:-20px;
+    bottom:-35px;
+
+    font-size:140px;
+    font-weight:950;
+
+    color:rgba(255,255,255,.02);
+}
+
+.raven h3{
+    position:relative;
+    z-index:2;
+
+    margin-top:20px;
+
+    font-size:44px;
+}
+
+.raven p{
+    position:relative;
+    z-index:2;
+
+    max-width:650px;
+
+    margin-top:15px;
+
+    color:#666;
+
+    font-size:13px;
+    line-height:2;
+}
+
+.pills{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+
+    margin-top:30px;
+}
+
+.pills span{
+    padding:10px 14px;
+
+    color:#777;
+
+    background:#0e0e0e;
+
+    border:1px solid #292929;
+    border-radius:8px;
+
+    font-size:9px;
+
+    transition:.25s;
+}
+
+.pills span:hover{
+    color:#ddd;
+    border-color:#555;
+    transform:translateY(-3px);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+}
+
+.stat{
+    padding:34px 20px;
+
+    text-align:center;
+
+    background:#0b0b0b;
+
+    border:1px solid #202020;
+    border-radius:16px;
+
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-7px);
+
+    border-color:#3b3b3b;
+}
+
+.stat strong{
+    display:block;
+    font-size:35px;
+}
+
+.stat span{
+    display:block;
+
+    margin-top:8px;
+
+    color:#555;
+
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+    width:min(850px,100%);
+    margin:auto;
+
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    right:19px;
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    background:#202020;
+}
+
+.timeline-item{
+    position:relative;
+
+    padding-right:60px;
+
+    margin-bottom:45px;
+}
+
+.timeline-item:last-child{
+    margin-bottom:0;
+}
+
+.dot{
+    position:absolute;
+
+    right:11px;
+    top:3px;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#070707;
+
+    border:1px solid #777;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.05);
+}
+
+.timeline-item small{
+    color:#555;
+
+    font-size:8px;
+    letter-spacing:3px;
+}
+
+.timeline-item h3{
+    margin-top:8px;
+    font-size:19px;
+}
+
+.timeline-item p{
+    margin-top:8px;
+
+    color:#606060;
+
+    font-size:12px;
+    line-height:1.9;
+}
+
+/* ================= DISCORD ================= */
+
+.discord{
+    width:min(1150px,90%);
+    margin:auto;
+
+    padding:30px 0 120px;
+}
+
+.discord-box{
+    position:relative;
+    overflow:hidden;
+
+    padding:95px 25px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            #252525,
+            transparent 55%
+        ),
+        #090909;
+
+    border:1px solid #2b2b2b;
+    border-radius:26px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.35);
+}
+
+.discord-box::before{
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.025);
+
+    animation:ring 6s linear infinite;
+}
+
+@keyframes ring{
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+.discord-box h2{
+    position:relative;
+    z-index:2;
+
+    font-size:49px;
+}
+
+.discord-box p{
+    position:relative;
+    z-index:2;
+
+    width:min(650px,100%);
+
+    margin:19px auto 32px;
+
+    color:#666;
+
+    font-size:13px;
+    line-height:1.9;
+}
+
+.discord-btn{
+    position:relative;
+    z-index:2;
+
+    min-width:250px;
+    height:64px;
+
+    padding:0 35px;
+
+    color:#eee;
+    background:#111;
+
+    border:1px solid #444;
+    border-radius:13px;
+
+    font-size:12px;
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.discord-btn:hover{
+    transform:translateY(-7px);
+
+    background:#181818;
+
+    border-color:#777;
+
+    box-shadow:
+        0 20px 50px rgba(255,255,255,.08);
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+    width:min(850px,100%);
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.faq-item{
+    overflow:hidden;
+
+    background:#0b0b0b;
+
+    border:1px solid #202020;
+    border-radius:13px;
+
+    transition:.3s;
+}
+
+.faq-item:hover{
+    border-color:#353535;
+}
+
+.question{
+    width:100%;
+
+    padding:20px;
+
+    display:flex;
+    justify-content:space-between;
+
+    text-align:right;
+
+    color:#ddd;
+
+    background:transparent;
+
+    border:0;
+
+    cursor:pointer;
+}
+
+.question b{
+    color:#555;
+    font-size:18px;
+}
+
+.answer{
+    max-height:0;
+
+    overflow:hidden;
+
+    padding:0 20px;
+
+    color:#666;
+
+    font-size:12px;
+    line-height:1.9;
+
+    transition:.35s;
+}
+
+.faq-item.active .answer{
+    max-height:200px;
+    padding-bottom:20px;
+}
+
+/* ================= CREDITS ================= */
+
+.credits{
+    width:min(1150px,90%);
+    margin:auto;
+
+    padding:0 0 100px;
+}
+
+.credits-box{
+    padding:45px;
+
+    background:#0a0a0a;
+
+    border:1px solid #202020;
+    border-radius:20px;
+
+    text-align:center;
+}
+
+.credits-box h2{
+    font-size:25px;
+}
+
+.credits-box > p{
+    margin-top:10px;
+
+    color:#555;
+
+    font-size:11px;
+}
+
+.credit-grid{
+    margin-top:32px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.credit{
+    padding:23px 15px;
+
+    background:#0f0f0f;
+
+    border:1px solid #1d1d1d;
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.credit:hover{
+    transform:translateY(-5px);
+
+    border-color:#444;
+    background:#131313;
+}
+
+.credit span{
+    display:block;
+
+    color:#555;
+
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.credit strong{
+    display:block;
+
+    margin-top:9px;
+
+    color:#bbb;
+
+    font-size:13px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:50px 20px;
+
+    text-align:center;
+
+    border-top:1px solid #171717;
+
+    color:#444;
+}
+
+.footer-logo{
+    font-size:21px;
+    font-weight:900;
+    letter-spacing:5px;
+}
+
+.footer-logo span{
+    color:#555;
+}
+
+footer p{
+    margin-top:10px;
+
+    font-size:10px;
+    line-height:1.8;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+
+    margin-top:22px;
+}
+
+.footer-links a{
+    color:#555;
+
+    font-size:10px;
+
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:#aaa;
+}
+
+/* ================= FLOATING BUTTONS ================= */
+
+.discord-float{
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    width:56px;
+    height:56px;
+
+    z-index:500;
+
+    border-radius:50%;
+
+    color:#eee;
+    background:#101010;
+
+    border:1px solid #444;
+
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.discord-float:hover{
+    transform:translateY(-6px) scale(1.05);
+
+    border-color:#777;
+
+    box-shadow:
+        0 15px 35px rgba(255,255,255,.08);
+}
+
+.top{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:48px;
+    height:48px;
+
+    z-index:500;
+
+    opacity:0;
+    pointer-events:none;
+
+    color:#aaa;
+    background:#0b0b0b;
+
+    border:1px solid #292929;
+    border-radius:11px;
+
+    transition:.3s;
+}
+
+.top.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.top:hover{
+    color:#fff;
+    border-color:#666;
+    transform:translateY(-4px);
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .nav{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .status{
+        display:none;
+    }
+
+    .overview,
+    .structure{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .team{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .credit-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        top:10px;
+        width:94%;
+    }
+
+    .hero{
+        padding-top:130px;
+    }
+
+    .hero h1{
+        font-size:75px;
+        letter-spacing:-7px;
+    }
+
+    .subtitle{
+        font-size:9px;
+        letter-spacing:2px;
+    }
+
+    .description{
+        font-size:12px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-info{
+        max-width:360px;
+    }
+
+    section{
+        padding:90px 0;
+    }
+
+    .section-head h2{
+        font-size:32px;
+    }
+
+    .overview-main{
+        padding:32px;
+    }
+
+    .cards,
+    .features,
+    .team,
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .command-box{
+        padding:30px;
+    }
+
+    .raven{
+        padding:34px;
+    }
+
+    .raven h3{
+        font-size:34px;
+    }
+
+    .discord-box{
+        padding:75px 20px;
+    }
+
+    .discord-box h2{
+        font-size:35px;
+    }
+
+    .credit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .credits-box{
+        padding:32px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAV ================= -->
+
+<nav class="navbar">
+
+    <a href="#home" class="logo">
+        RAV<span>OXN</span>
+    </a>
+
+    <ul class="nav">
+        <li><a href="#about">القطاع</a></li>
+        <li><a href="#features">الأنظمة</a></li>
+        <li><a href="#team">القيادة</a></li>
+        <li><a href="#raven">Raven</a></li>
+        <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-right">
+
+        <div class="status">
+            <i></i>
+            RAVEN ONLINE
+        </div>
+
+        <button class="menu" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-nav" id="mobileNav">
+
+    <a href="#about">القطاع</a>
+    <a href="#features">الأنظمة</a>
+    <a href="#team">القيادة</a>
+    <a href="#raven">Raven</a>
+    <a href="#faq">FAQ</a>
+
+</div>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-light"></div>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            <i></i>
+            PRIVATE SECTOR // RAVEN MILITARY MAP
+        </div>
+
+        <h1>
+            RAV<span>OXN</span>
+        </h1>
+
+        <div class="subtitle">
+            <b>قطاع خاص</b>
+            داخل
+            <b>Raven Military Map</b>
+        </div>
+
+        <p class="description">
+
+            Ravoxn هو قطاع خاص داخل ماب Raven العسكرية،
+            بهوية مستقلة ومجتمع خاص وتجربة مصممة
+            لتكون مختلفة عن أي تجربة عادية.
+
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="btn primary"
+                onclick="joinDiscord()">
+
+                دخول مجتمع Ravoxn
+
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="scrollToSection('about')">
+
+                اكتشف القطاع
+
+            </button>
+
+        </div>
+
+        <div class="hero-info">
+
+            <div>
+                <strong>RAVOXN</strong>
+                <small>PRIVATE SECTOR</small>
+            </div>
+
+            <div>
+                <strong>RAVEN</strong>
+                <small>MILITARY MAP</small>
+            </div>
+
+            <div>
+                <strong>2026</strong>
+                <small>ESTABLISHED</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="section-head">
+        <small>RAVOXN SECTOR</small>
+
+        <h2>
+            قطاع داخل Raven
+        </h2>
+
+        <p>
+            هوية خاصة داخل الماب العسكرية.
+        </p>
+    </div>
+
+    <div class="overview reveal">
+
+        <div class="overview-main">
+
+            <div class="label">
+                SECTOR OVERVIEW
+            </div>
+
+            <h3>
+                Ravoxn Sector
+            </h3>
+
+            <p>
+                Ravoxn هو قطاع خاص داخل ماب
+                Raven العسكرية.
+
+                يمتلك القطاع هويته وإدارته ومجتمعه
+                الخاص، ويهدف إلى بناء تجربة منظمة
+                ومختلفة للاعبين.
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <strong>R</strong>
+                <span>Ravoxn Identity</span>
+            </div>
+
+            <div class="card">
+                <strong>01</strong>
+                <span>Private Sector</span>
+            </div>
+
+            <div class="card">
+                <strong>RVN</strong>
+                <span>Raven Map</span>
+            </div>
+
+            <div class="card">
+                <strong>24/7</strong>
+                <span>Community</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features">
+
+    <div class="section-head">
+        <small>SECTOR SYSTEM</small>
+
+        <h2>
+            ماذا يقدم Ravoxn؟
+        </h2>
+
+        <p>
+            أنظمة وتجربة مصممة للقطاع.
+        </p>
+    </div>
+
+    <div class="features reveal">
+
+        <div class="feature">
+
+            <div class="icon">🛡</div>
+
+            <h3>إدارة القطاع</h3>
+
+            <p>
+                إدارة وتنظيم أعضاء القطاع
+                والأنشطة والفعاليات.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="icon">🎖</div>
+
+            <h3>الرتب</h3>
+
+            <p>
+                هيكل رتب واضح يساعد
+                على تنظيم المسؤوليات.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="icon">🎮</div>
+
+            <h3>Roblox</h3>
+
+            <p>
+                تجربة Ravoxn مرتبطة
+                بعالم Roblox وRaven.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="icon">💬</div>
+
+            <h3>Discord</h3>
+
+            <p>
+                مجتمع Discord هو مركز
+                التواصل الرئيسي للقطاع.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="icon">⚡</div>
+
+            <h3>فعاليات</h3>
+
+            <p>
+                فعاليات وأنشطة تضيف
+                تفاعلًا أكبر للمجتمع.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="icon">🔒</div>
+
+            <h3>قطاع خاص</h3>
+
+            <p>
+                Ravoxn قطاع خاص داخل
+                Raven Military Map.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STRUCTURE ================= -->
+
+<section>
+
+    <div class="section-head">
+        <small>ORGANIZATION</small>
+
+        <h2>
+            هيكل القطاع
+        </h2>
+
+        <p>
+            قيادة Ravoxn.
+        </p>
+    </div>
+
+    <div class="structure reveal">
+
+        <div class="command-box">
+
+            <div class="label">
+                SECTOR COMMAND
+            </div>
+
+            <h3>
+                Ravoxn Command
+            </h3>
+
+            <p>
+                قيادة القطاع مسؤولة عن
+                الإدارة والتطوير.
+            </p>
+
+            <div class="command-list">
+
+                <div>
+                    <b>Owner</b>
+                    <span>Rama</span>
+                </div>
+
+                <div>
+                    <b>Co-Owner</b>
+                    <span>Hala</span>
+                </div>
+
+                <div>
+                    <b>Assistant</b>
+                    <span>Hamza</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="command-table">
+
+            <div class="row header">
+                <span>LEVEL</span>
+                <span>POSITION</span>
+                <span>STATUS</span>
+            </div>
+
+            <div class="row">
+                <b>01</b>
+                <span>Owner</span>
+                <span>Active</span>
+            </div>
+
+            <div class="row">
+                <b>02</b>
+                <span>Co-Owner</span>
+                <span>Active</span>
+            </div>
+
+            <div class="row">
+                <b>03</b>
+                <span>Assistant</span>
+                <span>Active</span>
+            </div>
+
+            <div class="row">
+                <b>04</b>
+                <span>Sector Staff</span>
+                <span>Recruiting</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TEAM ================= -->
+
+<section id="team">
+
+    <div class="section-head">
+        <small>SECTOR COMMAND</small>
+
+        <h2>
+            قيادة Ravoxn
+        </h2>
+
+        <p>
+            فريق قيادة القطاع.
+        </p>
+    </div>
+
+    <div class="team reveal">
+
+        <div class="member">
+
+            <div class="avatar">
+                R
+            </div>
+
+            <h3>Rama</h3>
+
+            <div class="role">
+                OWNER
+            </div>
+
+            <p>
+                Owner والمسؤولة عن قيادة
+                Ravoxn وتطوير رؤية القطاع.
+            </p>
+
+            <span class="tag">
+                SECTOR COMMAND
+            </span>
+
+        </div>
+
+        <div class="member">
+
+            <div class="avatar">
+                H
+            </div>
+
+            <h3>Hala</h3>
+
+            <div class="role">
+                CO-OWNER
+            </div>
+
+            <p>
+                Co-Owner والمشاركة في
+                إدارة وتطوير القطاع.
+            </p>
+
+            <span class="tag">
+                EXECUTIVE COMMAND
+            </span>
+
+        </div>
+
+        <div class="member">
+
+            <div class="avatar">
+                H
+            </div>
+
+            <h3>Hamza</h3>
+
+            <div class="role">
+                ASSISTANT
+            </div>
+
+            <p>
+                مساعد الإدارة ودعم
+                قيادة Ravoxn.
+            </p>
+
+            <span class="tag">
+                SECTOR STAFF
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RAVEN ================= -->
+
+<section id="raven">
+
+    <div class="section-head">
+        <small>RAVEN MILITARY MAP</small>
+
+        <h2>
+            Raven
+        </h2>
+
+        <p>
+            الماب العسكرية التي يوجد داخلها القطاع.
+        </p>
+    </div>
+
+    <div class="raven reveal">
+
+        <div class="label">
+            RAVEN // MILITARY PROJECT
+        </div>
+
+        <h3>
+            Raven Military Map
+        </h3>
+
+        <p>
+            Raven هي الماب العسكرية التي يوجد
+            داخلها قطاع Ravoxn.
+
+            القطاع جزء من عالم Raven ويشارك
+            في التجربة والأنشطة داخل الماب.
+        </p>
+
+        <div class="pills">
+
+            <span>MILITARY</span>
+            <span>ROBLOX</span>
+            <span>RAVOXN SECTOR</span>
+            <span>COMMUNITY</span>
+            <span>EVENTS</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATS ================= -->
+
+<section>
+
+    <div class="section-head">
+        <small>SECTOR STATUS</small>
+
+        <h2>
+            Ravoxn بالأرقام
+        </h2>
+    </div>
+
+    <div class="stats reveal">
+
+        <div class="stat">
+            <strong>01</strong>
+            <span>PRIVATE SECTOR</span>
+        </div>
+
+        <div class="stat">
+            <strong>03</strong>
+            <span>COMMAND MEMBERS</span>
+        </div>
+
+        <div class="stat">
+            <strong>24/7</strong>
+            <span>COMMUNITY</span>
+        </div>
+
+        <div class="stat">
+            <strong>2026</strong>
+            <span>ESTABLISHED</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ROADMAP ================= -->
+
+<section>
+
+    <div class="section-head">
+        <small>DEVELOPMENT</small>
+
+        <h2>
+            مستقبل Ravoxn
+        </h2>
+    </div>
+
+    <div class="timeline reveal">
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <small>PHASE 01</small>
+
+            <h3>تأسيس القطاع</h3>
+
+            <p>
+                بناء الهوية الأساسية
+                وتنظيم قيادة Ravoxn.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <small>PHASE 02</small>
+
+            <h3>بناء المجتمع</h3>
+
+            <p>
+                تطوير Discord واستقبال
+                أعضاء القطاع.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <small>PHASE 03</small>
+
+            <h3>تطوير الأنظمة</h3>
+
+            <p>
+                إضافة أنظمة وتجارب
+                جديدة داخل Raven.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <small>PHASE 04</small>
+
+            <h3>Expansion</h3>
+
+            <p>
+                توسيع القطاع وبناء
+                تجربة أكبر للاعبين.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DISCORD ================= -->
+
+<div class="discord">
+
+    <div class="discord-box reveal">
+
+        <h2>
+            انضم إلى Ravoxn
+        </h2>
+
+        <p>
+            Ravoxn قطاع خاص داخل ماب
+            Raven العسكرية.
+
+            ادخل مجتمعنا وكن جزءًا من
+            التجربة.
+        </p>
+
+        <button
+            class="discord-btn"
+            onclick="joinDiscord()">
+
+            دخول Discord
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ================= FAQ ================= -->
+
+<section id="faq">
+
+    <div class="section-head">
+        <small>INFORMATION</small>
+
+        <h2>
+            الأسئلة الشائعة
+        </h2>
+    </div>
+
+    <div class="faq reveal">
+
+        <div class="faq-item">
+
+            <button
+                class="question"
+                onclick="faq(this)">
+
+                <span>
+                    ما هو Ravoxn؟
+                </span>
+
+                <b>+</b>
+
+            </button>
+
+            <div class="answer">
+                Ravoxn هو قطاع خاص داخل
+                ماب Raven العسكرية وله
+                مجتمعه وإدارته الخاصة.
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <button
+                class="question"
+                onclick="faq(this)">
+
+                <span>
+                    هل Ravoxn ماب مستقل؟
+                </span>
+
+                <b>+</b>
+
+            </button>
+
+            <div class="answer">
+                لا. Ravoxn قطاع خاص
+                داخل Raven Military Map.
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <button
+                class="question"
+                onclick="faq(this)">
+
+                <span>
+                    من قيادة القطاع؟
+                </span>
+
+                <b>+</b>
+
+            </button>
+
+            <div class="answer">
+                Owner: Rama<br>
+                Co-Owner: Hala<br>
+                Assistant: Hamza
+            </div>
+
+        </div>
+
+        <div class="faq-item">
+
+            <button
+                class="question"
+                onclick="faq(this)">
+
+                <span>
+                    كيف أدخل مجتمع Ravoxn؟
+                </span>
+
+                <b>+</b>
+
+            </button>
+
+            <div class="answer">
+                اضغط على زر Discord
+                الموجود في الموقع للدخول
+                إلى مجتمع Ravoxn.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CREDITS ================= -->
+
+<div class="credits reveal">
+
+    <div class="credits-box">
+
+        <h2>
+            CREDITS
+        </h2>
+
+        <p>
+            Ravoxn Sector — Raven Military Map
+        </p>
+
+        <div class="credit-grid">
+
+            <div class="credit">
+                <span>WEBSITE DEVELOPER</span>
+                <strong>Mohamed</strong>
+            </div>
+
+            <div class="credit">
+                <span>OWNER</span>
+                <strong>Rama</strong>
+            </div>
+
+            <div class="credit">
+                <span>CO-OWNER</span>
+                <strong>Hala</strong>
+            </div>
+
+            <div class="credit">
+                <span>ASSISTANT</span>
+                <strong>Hamza</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        RAV<span>OXN</span>
+    </div>
+
+    <p>
+        RAVOXN // PRIVATE SECTOR
+        <br>
+        Raven Military Map
+        <br>
+        © 2026 RAVOXN. All Rights Reserved.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="#home">الرئيسية</a>
+        <a href="#about">القطاع</a>
+        <a href="#team">القيادة</a>
+        <a href="#raven">Raven</a>
+        <a href="#faq">FAQ</a>
+
+    </div>
+
+</footer>
+
+<!-- ================= FLOATING ================= -->
+
+<button
+    class="discord-float"
+    onclick="joinDiscord()">
+
+    D
+
+</button>
+
+<button
+    class="top"
+    id="top"
+    onclick="window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    })">
+
+    ↑
+
+</button>
+
+<script>
+
+/* ================= DISCORD ================= */
+
+const DISCORD_LINK =
+"https://discord.gg/U4sz9XEg9";
+
+function joinDiscord(){
+
+    window.location.href = DISCORD_LINK;
+
+}
+
+/* ================= SCROLL ================= */
+
+function scrollToSection(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(!element) return;
+
+    element.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+/* ================= MOBILE ================= */
+
+function toggleMenu(){
+
+    document
+        .getElementById("mobileNav")
+        .classList
+        .toggle("active");
+
+}
+
+/* ================= FAQ ================= */
+
+function faq(button){
+
+    const item =
+        button.parentElement;
+
+    const items =
+        document.querySelectorAll(".faq-item");
+
+    items.forEach(other => {
+
+        if(other !== item){
+
+            other.classList.remove("active");
+
+            const icon =
+                other.querySelector(".question b");
+
+            if(icon){
+                icon.textContent = "+";
+            }
+
+        }
+
+    });
+
+    item.classList.toggle("active");
+
+    const icon =
+        button.querySelector("b");
+
+    icon.textContent =
+        item.classList.contains("active")
+        ? "−"
+        : "+";
+
+}
+
+/* ================= SCROLL REVEAL ================= */
+
+const revealElements =
+document.querySelectorAll(
+    ".reveal, .section-head"
+);
+
+const observer =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+                observer.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+revealElements.forEach(
+    element =>
+        observer.observe(element)
+);
+
+/* ================= TOP BUTTON ================= */
+
+const topButton =
+document.getElementById("top");
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.scrollY > 600){
+
+            topButton.classList.add("show");
+
+        }else{
+
+            topButton.classList.remove("show");
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+/* ================= CLOSE MOBILE ================= */
+
+document.querySelectorAll(
+    "#mobileNav a"
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById("mobileNav")
+                .classList
+                .remove("active");
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+</html
