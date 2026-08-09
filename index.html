@@ -5,20 +5,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RAVOXN | الموقع الرسمي</title>
+<title>RAVOXN — الاستوديو الرقمي</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 
 :root{
-    --bg:#0b0b0b;
-    --card:#111;
-    --card2:#151515;
-    --white:#fff;
-    --text:#e9e9e9;
-    --muted:#858585;
-    --line:rgba(255,255,255,.09);
-    --line2:rgba(255,255,255,.18);
+    --bg:#f4f4f4;
+    --white:#ffffff;
+    --black:#080808;
+    --text:#151515;
+    --gray:#777;
+    --light:#e7e7e7;
+    --border:#dedede;
+    --dark:#111;
+    --radius:22px;
 }
 
 *{
@@ -32,9 +33,9 @@ html{
 }
 
 body{
+    font-family:"Cairo",sans-serif;
     background:var(--bg);
     color:var(--text);
-    font-family:"Cairo",sans-serif;
     overflow-x:hidden;
 }
 
@@ -47,74 +48,84 @@ button{
     cursor:pointer;
 }
 
-::selection{
-    background:white;
-    color:black;
+a{
+    text-decoration:none;
 }
 
-/* الخلفية */
+/* =========================
+   BACKGROUND
+========================= */
 
 .background{
     position:fixed;
     inset:0;
+    z-index:-2;
     pointer-events:none;
-    z-index:-1;
     overflow:hidden;
 }
 
 .grid{
     position:absolute;
     inset:0;
-    opacity:.025;
+    opacity:.35;
+
     background-image:
-        linear-gradient(#fff 1px,transparent 1px),
-        linear-gradient(90deg,#fff 1px,transparent 1px);
+        linear-gradient(#ddd 1px,transparent 1px),
+        linear-gradient(90deg,#ddd 1px,transparent 1px);
+
     background-size:70px 70px;
-    mask-image:linear-gradient(to bottom,black,transparent 80%);
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+    );
 }
 
 .glow{
     position:absolute;
-    width:400px;
-    height:400px;
+    width:450px;
+    height:450px;
     border-radius:50%;
     background:white;
-    opacity:.025;
-    filter:blur(120px);
+    filter:blur(100px);
+    opacity:.8;
 }
 
 .glow.one{
-    top:-250px;
-    left:25%;
+    top:-300px;
+    left:20%;
 }
 
 .glow.two{
-    right:-250px;
     top:50%;
+    right:-350px;
 }
 
-/* النافبار */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
     position:fixed;
-    top:20px;
+    top:18px;
     left:50%;
     transform:translateX(-50%);
 
     width:min(1180px,calc(100% - 30px));
-    height:64px;
-
-    padding:0 18px;
+    height:66px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    background:rgba(12,12,12,.82);
-    border:1px solid var(--line);
-    border-radius:17px;
+    padding:0 18px;
 
-    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,.88);
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    backdrop-filter:blur(18px);
 
     z-index:1000;
 
@@ -123,57 +134,64 @@ button{
 
 .navbar.scrolled{
     top:10px;
-    background:#0d0d0d;
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
 }
 
 .logo{
-    color:white;
-    font-size:18px;
+    font-size:19px;
     font-weight:900;
     letter-spacing:5px;
+    color:#050505;
 }
 
 .nav-links{
     display:flex;
-    gap:4px;
+    gap:3px;
 }
 
 .nav-links a{
     color:#777;
-    text-decoration:none;
-    font-size:11px;
-    padding:9px 12px;
+    font-size:12px;
+    font-weight:700;
+
+    padding:9px 13px;
     border-radius:9px;
+
     transition:.2s;
 }
 
 .nav-links a:hover{
-    color:white;
-    background:#181818;
+    color:#000;
+    background:#eee;
 }
 
-.discord-btn{
+.nav-discord{
     border:0;
-    background:white;
-    color:black;
-    padding:10px 16px;
+    background:#080808;
+    color:#fff;
+
+    padding:10px 17px;
     border-radius:10px;
-    font-size:11px;
+
+    font-size:12px;
     font-weight:800;
+
     transition:.25s;
 }
 
-.discord-btn:hover{
+.nav-discord:hover{
     transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(255,255,255,.12);
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
 }
 
-/* الهيرو */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:850px;
     width:min(1180px,calc(100% - 30px));
+
     margin:auto;
 
     display:flex;
@@ -181,137 +199,150 @@ button{
     justify-content:center;
 
     text-align:center;
-    position:relative;
 
-    padding:130px 0 100px;
+    position:relative;
+    padding:150px 0 100px;
 }
 
 .hero-content{
     width:100%;
 }
 
-.status{
+.badge{
     display:inline-flex;
     align-items:center;
     gap:8px;
 
-    padding:7px 13px;
+    padding:7px 14px;
 
-    color:#777;
-    font-size:10px;
-
-    border:1px solid var(--line);
-    background:#ffffff04;
+    background:#fff;
+    border:1px solid var(--border);
     border-radius:50px;
 
-    animation:up .8s ease;
+    color:#777;
+    font-size:11px;
+
+    animation:fadeUp .7s ease;
 }
 
-.status-dot{
+.badge-dot{
     width:6px;
     height:6px;
-    background:white;
+    background:#111;
     border-radius:50%;
-    box-shadow:0 0 12px white;
+    box-shadow:0 0 10px #111;
 }
 
 .hero h1{
-    margin-top:20px;
+    margin-top:22px;
 
-    font-size:clamp(70px,13vw,165px);
+    font-size:clamp(75px,14vw,175px);
     line-height:.85;
 
+    letter-spacing:-11px;
     font-weight:900;
-    letter-spacing:-10px;
 
-    color:white;
+    color:#080808;
 
-    animation:up 1s ease;
+    animation:fadeUp .9s ease;
 }
 
-.hero h2{
+.hero-subtitle{
     margin-top:27px;
 
-    color:#ddd;
     font-size:clamp(15px,2vw,21px);
+    font-weight:700;
 
-    animation:up 1.2s ease;
+    color:#555;
+
+    animation:fadeUp 1.1s ease;
 }
 
-.hero p{
-    max-width:590px;
+.hero-subtitle strong{
+    color:#111;
+}
+
+.hero-description{
+    max-width:610px;
     margin:15px auto 0;
 
-    color:#666;
+    color:#888;
     font-size:13px;
     line-height:2;
 
-    animation:up 1.4s ease;
+    animation:fadeUp 1.3s ease;
 }
 
-.hero-buttons{
+.hero-actions{
     display:flex;
     justify-content:center;
     gap:10px;
 
-    margin-top:28px;
+    margin-top:30px;
 
-    animation:up 1.6s ease;
+    animation:fadeUp 1.5s ease;
 }
 
-.primary,
-.secondary{
-    padding:13px 22px;
+.btn{
     border-radius:11px;
-    font-size:11px;
+    padding:13px 23px;
+
+    font-size:12px;
     font-weight:800;
+
     transition:.25s;
 }
 
-.primary{
-    background:white;
-    color:black;
-    border:1px solid white;
+.btn-black{
+    background:#080808;
+    color:#fff;
+    border:1px solid #080808;
 }
 
-.primary:hover{
+.btn-black:hover{
     transform:translateY(-3px);
-    box-shadow:0 15px 35px rgba(255,255,255,.12);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 }
 
-.secondary{
-    color:white;
-    background:#ffffff05;
-    border:1px solid var(--line);
+.btn-white{
+    background:#fff;
+    color:#111;
+    border:1px solid var(--border);
 }
 
-.secondary:hover{
+.btn-white:hover{
     transform:translateY(-3px);
-    background:#ffffff0b;
-    border-color:var(--line2);
+    background:#eee;
 }
 
 .scroll{
     position:absolute;
-    bottom:40px;
+    bottom:45px;
     left:50%;
     transform:translateX(-50%);
 
-    color:#444;
-    font-size:9px;
+    color:#999;
+    font-size:10px;
     letter-spacing:3px;
+
+    animation:scroll 2s infinite;
 }
 
-.scroll:after{
+.scroll::after{
     content:"";
     display:block;
+
     width:1px;
     height:30px;
-    background:#333;
+
+    background:#bbb;
+
     margin:10px auto 0;
 }
 
-/* الأقسام */
+/* =========================
+   SECTIONS
+========================= */
 
 .section{
     width:min(1180px,calc(100% - 30px));
@@ -319,36 +350,41 @@ button{
     padding:100px 0;
 }
 
-.section-header{
+.section-head{
     display:flex;
     align-items:end;
     justify-content:space-between;
     gap:30px;
-    margin-bottom:38px;
+
+    margin-bottom:40px;
 }
 
-.number{
-    color:#444;
-    font-size:10px;
+.section-number{
+    color:#aaa;
+    font-size:11px;
     letter-spacing:2px;
 }
 
 .section-title{
     margin-top:8px;
-    color:white;
-    font-size:clamp(38px,6vw,70px);
+
+    font-size:clamp(40px,6vw,70px);
     line-height:1;
+
     letter-spacing:-4px;
 }
 
-.section-text{
+.section-description{
     max-width:450px;
-    color:#666;
-    font-size:12px;
+
+    color:#888;
+    font-size:13px;
     line-height:2;
 }
 
-/* عن */
+/* =========================
+   ABOUT
+========================= */
 
 .about{
     display:grid;
@@ -356,40 +392,42 @@ button{
 
     min-height:450px;
 
+    background:#fff;
+
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+
     overflow:hidden;
-
-    background:#101010;
-    border:1px solid var(--line);
-    border-radius:23px;
 }
 
-.about-content{
+.about-text{
     padding:60px;
+
     display:flex;
-    flex-direction:column;
     justify-content:center;
+    flex-direction:column;
 }
 
-.small-title{
-    color:#555;
+.about-label{
+    color:#999;
     font-size:10px;
     letter-spacing:3px;
 }
 
-.about h3{
+.about h2{
     margin-top:12px;
 
-    color:white;
-    font-size:clamp(40px,5vw,68px);
+    font-size:clamp(42px,5vw,70px);
     line-height:1;
     letter-spacing:-4px;
 }
 
 .about p{
     max-width:500px;
+
     margin-top:18px;
 
-    color:#666;
+    color:#777;
     font-size:13px;
     line-height:2;
 }
@@ -397,147 +435,98 @@ button{
 .about-buttons{
     display:flex;
     gap:9px;
-    margin-top:25px;
+    margin-top:27px;
 }
 
-.visual{
+.about-visual{
     position:relative;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    background:
-        radial-gradient(circle,#292929,#111 45%,#090909 75%);
+    overflow:hidden;
+
+    background:#111;
 }
 
-.ring{
+.circle{
     position:absolute;
-    border:1px solid #ffffff10;
+    border:1px solid rgba(255,255,255,.12);
     border-radius:50%;
 }
 
-.ring.one{
-    width:360px;
-    height:360px;
+.c1{
+    width:370px;
+    height:370px;
 }
 
-.ring.two{
-    width:260px;
-    height:260px;
+.c2{
+    width:270px;
+    height:270px;
 }
 
-.ring.three{
-    width:160px;
-    height:160px;
+.c3{
+    width:170px;
+    height:170px;
 }
 
-.big-r{
+.visual-logo{
     position:relative;
     z-index:2;
 
     color:white;
+
     font-size:120px;
     font-weight:900;
+
     letter-spacing:-10px;
 
-    text-shadow:0 0 60px rgba(255,255,255,.12);
+    text-shadow:0 0 60px rgba(255,255,255,.2);
 }
 
-/* ماذا نقدم */
+/* =========================
+   STATS
+========================= */
 
-.services{
+.stats{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+
+    margin-top:12px;
 }
 
-.service{
-    position:relative;
+.stat{
+    padding:25px;
 
-    min-height:240px;
-    padding:30px;
+    background:#fff;
 
-    background:#101010;
-    border:1px solid var(--line);
-    border-radius:20px;
+    border:1px solid var(--border);
+    border-radius:17px;
 
-    overflow:hidden;
-
-    transition:.3s;
+    transition:.25s;
 }
 
-.service:hover{
-    transform:translateY(-7px);
-    border-color:var(--line2);
-    background:#131313;
+.stat:hover{
+    transform:translateY(-5px);
 }
 
-.service-number{
-    color:#444;
-    font-size:10px;
-    letter-spacing:2px;
+.stat-value{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-2px;
 }
 
-.service-icon{
-    position:absolute;
-    top:25px;
-    left:30px;
-
-    width:48px;
-    height:48px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#ddd;
-    background:#181818;
-
-    border:1px solid var(--line);
-    border-radius:13px;
-
-    transition:.3s;
+.stat-label{
+    margin-top:3px;
+    color:#888;
+    font-size:11px;
 }
 
-.service:hover .service-icon{
-    background:white;
-    color:black;
-    transform:rotate(-5deg) scale(1.06);
-}
-
-.service h3{
-    margin-top:55px;
-    color:white;
-    font-size:23px;
-}
-
-.service p{
-    max-width:500px;
-    margin-top:9px;
-
-    color:#666;
-    font-size:12px;
-    line-height:2;
-}
-
-.arrow{
-    position:absolute;
-    bottom:25px;
-    left:30px;
-
-    color:#444;
-    font-size:18px;
-
-    transition:.3s;
-}
-
-.service:hover .arrow{
-    color:white;
-    transform:translateX(-5px);
-}
-
-/* المميزات */
+/* =========================
+   FEATURES
+========================= */
 
 .features{
     display:grid;
@@ -546,27 +535,29 @@ button{
 }
 
 .feature{
-    min-height:250px;
-    padding:30px;
+    min-height:270px;
 
-    background:#101010;
-    border:1px solid var(--line);
+    padding:32px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
     border-radius:20px;
 
     transition:.3s;
 }
 
 .feature:hover{
-    transform:translateY(-6px);
-    border-color:var(--line2);
+    transform:translateY(-7px);
+    box-shadow:0 20px 50px rgba(0,0,0,.06);
 }
 
 .feature-top{
     display:flex;
     justify-content:space-between;
 
-    color:#444;
-    font-size:10px;
+    color:#aaa;
+    font-size:11px;
 }
 
 .feature-icon{
@@ -579,28 +570,133 @@ button{
     align-items:center;
     justify-content:center;
 
-    color:black;
-    background:white;
-
     border-radius:12px;
 
+    background:#080808;
+    color:#fff;
+
+    font-size:17px;
     font-weight:900;
 }
 
 .feature h3{
-    margin-top:19px;
-    color:white;
-    font-size:18px;
+    margin-top:20px;
+    font-size:19px;
 }
 
 .feature p{
-    margin-top:7px;
-    color:#666;
+    margin-top:8px;
+
+    color:#888;
+    font-size:12px;
+    line-height:1.9;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.service{
+    position:relative;
+
+    min-height:240px;
+
+    padding:30px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 50px rgba(0,0,0,.06);
+}
+
+.service-number{
+    color:#aaa;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.service-icon{
+    position:absolute;
+
+    top:25px;
+    left:30px;
+
+    width:50px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#f2f2f2;
+    border:1px solid var(--border);
+
+    color:#111;
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.service:hover .service-icon{
+    background:#080808;
+    color:white;
+    transform:rotate(-6deg) scale(1.05);
+}
+
+.service h3{
+    margin-top:55px;
+
+    font-size:24px;
+    letter-spacing:-1px;
+}
+
+.service p{
+    max-width:500px;
+
+    margin-top:10px;
+
+    color:#888;
     font-size:12px;
     line-height:2;
 }
 
-/* المطورون */
+.service-arrow{
+    position:absolute;
+
+    bottom:25px;
+    left:30px;
+
+    color:#aaa;
+    font-size:20px;
+
+    transition:.3s;
+}
+
+.service:hover .service-arrow{
+    color:#111;
+    transform:translateX(-5px);
+}
+
+/* =========================
+   DEVELOPERS
+========================= */
 
 .developers{
     display:grid;
@@ -611,8 +707,9 @@ button{
 .developer{
     padding:25px;
 
-    background:#101010;
-    border:1px solid var(--line);
+    background:#fff;
+
+    border:1px solid var(--border);
     border-radius:19px;
 
     transition:.3s;
@@ -620,169 +717,191 @@ button{
 
 .developer:hover{
     transform:translateY(-6px);
-    border-color:var(--line2);
+    box-shadow:0 20px 45px rgba(0,0,0,.06);
 }
 
 .avatar{
-    width:58px;
-    height:58px;
+    width:60px;
+    height:60px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:black;
-    background:linear-gradient(135deg,#fff,#555);
-
     border-radius:50%;
 
-    font-size:18px;
+    background:#111;
+    color:#fff;
+
+    font-size:19px;
     font-weight:900;
 }
 
 .developer h3{
-    margin-top:16px;
-    color:white;
-    font-size:14px;
+    margin-top:17px;
+
     direction:ltr;
     text-align:right;
+
+    font-size:15px;
 }
 
-.role{
+.developer-role{
     display:block;
-    margin-top:3px;
-    color:#555;
-    font-size:10px;
+
+    color:#888;
+    font-size:11px;
+    margin-top:4px;
 }
 
-.copy{
+.copy-btn{
     width:100%;
-    margin-top:17px;
-    padding:9px;
 
-    color:white;
-    background:#ffffff04;
+    margin-top:18px;
+    padding:10px;
 
-    border:1px solid var(--line);
+    background:#f5f5f5;
+    color:#111;
+
+    border:1px solid var(--border);
     border-radius:9px;
 
-    font-size:10px;
+    font-size:11px;
 
     transition:.2s;
 }
 
-.copy:hover{
-    color:black;
-    background:white;
+.copy-btn:hover{
+    background:#111;
+    color:#fff;
 }
 
-/* Discord */
+/* =========================
+   DISCORD
+========================= */
 
 .discord{
     position:relative;
     overflow:hidden;
 
-    padding:95px 25px;
     text-align:center;
 
-    background:
-        radial-gradient(circle,#222,#0b0b0b 70%);
+    padding:100px 25px;
 
-    border:1px solid var(--line);
-    border-radius:25px;
+    background:#111;
+
+    border-radius:26px;
+
+    border:1px solid #222;
+}
+
+.discord::before,
+.discord::after{
+    content:"";
+
+    position:absolute;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;
+}
+
+.discord::before{
+    width:500px;
+    height:500px;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.discord::after{
+    width:300px;
+    height:300px;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.discord-content{
+    position:relative;
+    z-index:2;
 }
 
 .discord h2{
-    position:relative;
-    z-index:2;
+    color:#fff;
 
-    color:white;
     font-size:clamp(40px,6vw,75px);
     line-height:1;
     letter-spacing:-5px;
 }
 
 .discord p{
-    position:relative;
-    z-index:2;
+    max-width:570px;
 
-    max-width:560px;
-    margin:18px auto 27px;
+    margin:20px auto 28px;
 
-    color:#666;
-    font-size:12px;
-    line-height:2;
+    color:#999;
+
+    font-size:13px;
+    line-height:1.9;
 }
 
-/* الفوتر */
+.discord .btn-black{
+    background:#fff;
+    color:#000;
+    border-color:#fff;
+}
 
-footer{
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
     width:min(1180px,calc(100% - 30px));
-    margin:auto;
 
+    margin:auto;
     padding:30px 0 45px;
 
-    border-top:1px solid var(--line);
+    border-top:1px solid var(--border);
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    color:#444;
-    font-size:10px;
+    color:#999;
+    font-size:11px;
 }
 
 .footer-logo{
-    color:#777;
+    color:#222;
+
     font-weight:900;
     letter-spacing:3px;
 }
 
-/* الأنيميشن */
-
-.reveal{
-    opacity:0;
-    transform:translateY(35px);
-
-    transition:
-        opacity .7s ease,
-        transform .7s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-@keyframes up{
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* Toast */
+/* =========================
+   TOAST
+========================= */
 
 .toast{
     position:fixed;
+
     bottom:25px;
     left:50%;
 
     transform:translate(-50%,30px);
 
-    padding:11px 17px;
+    padding:12px 18px;
 
-    background:white;
-    color:black;
+    border-radius:11px;
 
-    border-radius:10px;
+    background:#080808;
+    color:#fff;
 
-    font-size:10px;
+    font-size:11px;
     font-weight:800;
 
     opacity:0;
@@ -798,7 +917,53 @@ footer{
     transform:translate(-50%,0);
 }
 
-/* الجوال */
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(22px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes scroll{
+    0%,100%{
+        opacity:.35;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
@@ -810,31 +975,39 @@ footer{
         min-height:720px;
     }
 
-    .section-header{
+    .hero h1{
+        letter-spacing:-7px;
+    }
+
+    .section-head{
         display:block;
     }
 
-    .section-text{
-        margin-top:17px;
+    .section-description{
+        margin-top:18px;
     }
 
     .about{
         grid-template-columns:1fr;
     }
 
-    .visual{
+    .about-visual{
         display:none;
-    }
-
-    .services{
-        grid-template-columns:1fr;
     }
 
     .features{
         grid-template-columns:1fr;
     }
 
+    .services{
+        grid-template-columns:1fr;
+    }
+
     .developers{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats{
         grid-template-columns:repeat(2,1fr);
     }
 }
@@ -845,20 +1018,24 @@ footer{
         height:60px;
     }
 
-    .hero h1{
-        font-size:65px;
-        letter-spacing:-6px;
+    .hero{
+        padding-top:130px;
     }
 
-    .hero-buttons{
+    .hero h1{
+        font-size:65px;
+        letter-spacing:-5px;
+    }
+
+    .hero-actions{
         flex-direction:column;
     }
 
-    .hero-buttons button{
+    .hero-actions .btn{
         width:100%;
     }
 
-    .about-content{
+    .about-text{
         padding:35px 25px;
     }
 
@@ -866,7 +1043,7 @@ footer{
         flex-direction:column;
     }
 
-    .about-buttons button{
+    .about-buttons .btn{
         width:100%;
     }
 
@@ -875,10 +1052,10 @@ footer{
     }
 
     .section{
-        padding:75px 0;
+        padding:80px 0;
     }
 
-    footer{
+    .footer{
         flex-direction:column;
         align-items:flex-start;
         gap:10px;
@@ -895,6 +1072,8 @@ footer{
     <div class="glow two"></div>
 </div>
 
+<!-- NAVBAR -->
+
 <nav class="navbar" id="navbar">
 
     <div class="logo">
@@ -910,45 +1089,46 @@ footer{
 
     </div>
 
-    <button class="discord-btn" onclick="discord()">
+    <button class="nav-discord" onclick="joinDiscord()">
         دخول السيرفر
     </button>
 
 </nav>
 
+<!-- HERO -->
+
 <header class="hero" id="الرئيسية">
 
     <div class="hero-content">
 
-        <div class="status">
-            <span class="status-dot"></span>
-            القطاع الرسمي
+        <div class="badge">
+            <span class="badge-dot"></span>
+            استوديو رقمي مستقل
         </div>
 
         <h1>RAVOXN</h1>
 
-        <h2>
-            هنا تبدأ الفكرة.
-        </h2>
+        <div class="hero-subtitle">
+            <strong>نصنع الأفكار. نطوّر التجارب.</strong>
+        </div>
 
-        <p>
-            بوابة RAVOXN الرسمية،
-            حيث تجد كل ما يتعلق بالقطاع
-            في مكان واحد.
+        <p class="hero-description">
+            نطوّر الألعاب والمواقع والأنظمة والتجارب الرقمية
+            بأفكار جديدة وتصميم بسيط وتجربة مختلفة.
         </p>
 
-        <div class="hero-buttons">
+        <div class="hero-actions">
 
             <button
-                class="primary"
-                onclick="go('ماذا-نقدم')">
-                ماذا نقدم؟
+                class="btn btn-black"
+                onclick="scrollToId('ماذا-نقدم')">
+                اكتشف ما نقدمه
             </button>
 
             <button
-                class="secondary"
-                onclick="discord()">
-                دخول السيرفر
+                class="btn btn-white"
+                onclick="scrollToId('عن')">
+                عن RAVOXN
             </button>
 
         </div>
@@ -961,13 +1141,15 @@ footer{
 
 </header>
 
+<!-- ABOUT -->
+
 <section class="section reveal" id="عن">
 
-    <div class="section-header">
+    <div class="section-head">
 
         <div>
 
-            <div class="number">
+            <div class="section-number">
                 01 / RAVOXN
             </div>
 
@@ -977,58 +1159,57 @@ footer{
 
         </div>
 
-        <p class="section-text">
-            نهدف إلى بناء تجربة مرتبة ومميزة
-            لأعضاء القطاع، مع الاهتمام بالتفاصيل
-            التي تصنع الفرق.
+        <p class="section-description">
+            لا نريد أن نصنع مشروعًا يعمل فقط،
+            نريد أن نصنع تجربة يتذكرها الشخص.
         </p>
 
     </div>
 
     <div class="about">
 
-        <div class="about-content">
+        <div class="about-text">
 
-            <div class="small-title">
-                OFFICIAL SECTOR
+            <div class="about-label">
+                RAVOXN STUDIO
             </div>
 
-            <h3>
+            <h2>
                 نصنعها<br>
                 بطريقتنا.
-            </h3>
+            </h2>
 
             <p>
-                بيئة منظمة تجمع بين الأنظمة،
-                الرتب، والتجارب المختلفة
-                داخل القطاع.
+                نعمل على تطوير الألعاب والأنظمة والمواقع
+                والتجارب الرقمية. كل مشروع يبدأ بفكرة،
+                ثم نحاول تحويلها إلى شيء أكبر.
             </p>
 
             <div class="about-buttons">
 
                 <button
-                    class="primary"
-                    onclick="discord()">
-                    دخول السيرفر
+                    class="btn btn-black"
+                    onclick="scrollToId('ماذا-نقدم')">
+                    ماذا نقدم؟
                 </button>
 
                 <button
-                    class="secondary"
-                    onclick="go('المطورون')">
-                    المطورون
+                    class="btn btn-white"
+                    onclick="joinDiscord()">
+                    المجتمع
                 </button>
 
             </div>
 
         </div>
 
-        <div class="visual">
+        <div class="about-visual">
 
-            <div class="ring one"></div>
-            <div class="ring two"></div>
-            <div class="ring three"></div>
+            <div class="circle c1"></div>
+            <div class="circle c2"></div>
+            <div class="circle c3"></div>
 
-            <div class="big-r">
+            <div class="visual-logo">
                 R
             </div>
 
@@ -1036,15 +1217,41 @@ footer{
 
     </div>
 
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-value">01</div>
+            <div class="stat-label">الاستوديو</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-value">04</div>
+            <div class="stat-label">مطورين</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-value">∞</div>
+            <div class="stat-label">أفكار</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-value">2026</div>
+            <div class="stat-label">البداية</div>
+        </div>
+
+    </div>
+
 </section>
+
+<!-- FEATURES -->
 
 <section class="section reveal">
 
-    <div class="section-header">
+    <div class="section-head">
 
         <div>
 
-            <div class="number">
+            <div class="section-number">
                 02 / المميزات
             </div>
 
@@ -1054,9 +1261,9 @@ footer{
 
         </div>
 
-        <p class="section-text">
-            كل شيء مصمم ليكون واضحًا،
-            سريعًا، وسهل الاستخدام.
+        <p class="section-description">
+            نركز على التفاصيل الصغيرة التي تجعل
+            المشروع أفضل وأوضح وأسهل في الاستخدام.
         </p>
 
     </div>
@@ -1079,8 +1286,8 @@ footer{
             </h3>
 
             <p>
-                واجهة واضحة ومرتبة بدون
-                عناصر زائدة.
+                واجهات واضحة وبسيطة بدون ازدحام
+                أو عناصر غير ضرورية.
             </p>
 
         </div>
@@ -1101,8 +1308,8 @@ footer{
             </h3>
 
             <p>
-                مؤثرات خفيفة للحفاظ على
-                سرعة الموقع وسلاسته.
+                مؤثرات خفيفة ومحسوبة حتى نحافظ
+                على سرعة الموقع وسلاسة الاستخدام.
             </p>
 
         </div>
@@ -1111,7 +1318,7 @@ footer{
 
             <div class="feature-top">
                 <span>03</span>
-                <span>SYSTEM</span>
+                <span>FUTURE</span>
             </div>
 
             <div class="feature-icon">
@@ -1119,12 +1326,12 @@ footer{
             </div>
 
             <h3>
-                أنظمة منظمة
+                قابل للتطوير
             </h3>
 
             <p>
-                كل شيء مرتب بطريقة تسهل
-                الوصول للمعلومات.
+                الموقع والمشاريع مصممة بحيث يمكن
+                إضافة أفكار وميزات جديدة مستقبلًا.
             </p>
 
         </div>
@@ -1133,15 +1340,15 @@ footer{
 
 </section>
 
-<section
-    class="section reveal"
-    id="ماذا-نقدم">
+<!-- SERVICES -->
 
-    <div class="section-header">
+<section class="section reveal" id="ماذا-نقدم">
+
+    <div class="section-head">
 
         <div>
 
-            <div class="number">
+            <div class="section-number">
                 03 / ماذا نقدم
             </div>
 
@@ -1151,9 +1358,9 @@ footer{
 
         </div>
 
-        <p class="section-text">
-            مجموعة من الأشياء التي تجعل
-            تجربة القطاع أفضل وأكثر تنظيمًا.
+        <p class="section-description">
+            نحول الأفكار إلى تجارب رقمية ونبني
+            الألعاب والمواقع والأنظمة بطريقة مختلفة.
         </p>
 
     </div>
@@ -1163,7 +1370,7 @@ footer{
         <div class="service">
 
             <div class="service-number">
-                01 / SYSTEMS
+                01 / GAMES
             </div>
 
             <div class="service-icon">
@@ -1171,15 +1378,15 @@ footer{
             </div>
 
             <h3>
-                أنظمة مخصصة
+                تطوير الألعاب
             </h3>
 
             <p>
-                أنظمة مصممة لتناسب احتياجات
-                القطاع وتجعل التجربة أكثر تنظيمًا.
+                تطوير ألعاب وتجارب تفاعلية مع أنظمة
+                مخصصة واهتمام بتجربة اللاعب.
             </p>
 
-            <div class="arrow">
+            <div class="service-arrow">
                 ←
             </div>
 
@@ -1188,7 +1395,7 @@ footer{
         <div class="service">
 
             <div class="service-number">
-                02 / RANKS
+                02 / SYSTEMS
             </div>
 
             <div class="service-icon">
@@ -1196,15 +1403,15 @@ footer{
             </div>
 
             <h3>
-                الرتب والقطاعات
+                تطوير الأنظمة
             </h3>
 
             <p>
-                نظام واضح للرتب والقطاعات
-                يساعد على تنظيم العمل داخل السيرفر.
+                أنظمة متقدمة ومترابطة تساعد المشاريع
+                على العمل بشكل منظم وقابل للتطوير.
             </p>
 
-            <div class="arrow">
+            <div class="service-arrow">
                 ←
             </div>
 
@@ -1213,7 +1420,7 @@ footer{
         <div class="service">
 
             <div class="service-number">
-                03 / EXPERIENCE
+                03 / WEB
             </div>
 
             <div class="service-icon">
@@ -1221,15 +1428,15 @@ footer{
             </div>
 
             <h3>
-                تجربة متكاملة
+                تطوير المواقع
             </h3>
 
             <p>
-                نهتم بالتفاصيل التي تجعل
-                تجربة الأعضاء أفضل وأسهل.
+                مواقع حديثة وسريعة بواجهات واضحة
+                وتجربة استخدام مرتبة.
             </p>
 
-            <div class="arrow">
+            <div class="service-arrow">
                 ←
             </div>
 
@@ -1238,7 +1445,7 @@ footer{
         <div class="service">
 
             <div class="service-number">
-                04 / COMMUNITY
+                04 / DIGITAL
             </div>
 
             <div class="service-icon">
@@ -1246,15 +1453,15 @@ footer{
             </div>
 
             <h3>
-                مجتمع متكامل
+                التجارب الرقمية
             </h3>
 
             <p>
-                مساحة تجمع أعضاء القطاع
-                وتساعد على التواصل بينهم.
+                نحول الأفكار الجديدة إلى تجارب تجمع
+                بين التصميم والبرمجة والإبداع.
             </p>
 
-            <div class="arrow">
+            <div class="service-arrow">
                 ←
             </div>
 
@@ -1264,15 +1471,15 @@ footer{
 
 </section>
 
-<section
-    class="section reveal"
-    id="المطورون">
+<!-- DEVELOPERS -->
 
-    <div class="section-header">
+<section class="section reveal" id="المطورون">
+
+    <div class="section-head">
 
         <div>
 
-            <div class="number">
+            <div class="section-number">
                 04 / الفريق
             </div>
 
@@ -1282,9 +1489,9 @@ footer{
 
         </div>
 
-        <p class="section-text">
-            الأشخاص المسؤولون عن تطوير
-            الموقع والأنظمة.
+        <p class="section-description">
+            الفريق الذي يعمل على تحويل أفكار
+            RAVOXN إلى مشاريع حقيقية.
         </p>
 
     </div>
@@ -1297,16 +1504,14 @@ footer{
                 Z
             </div>
 
-            <h3>
-                z7xq
-            </h3>
+            <h3>z7xq</h3>
 
-            <span class="role">
+            <span class="developer-role">
                 المؤسس والمطور
             </span>
 
             <button
-                class="copy"
+                class="copy-btn"
                 onclick="copyUser('z7xq')">
                 نسخ Discord
             </button>
@@ -1319,16 +1524,14 @@ footer{
                 R
             </div>
 
-            <h3>
-                9.iji
-            </h3>
+            <h3>9.iji</h3>
 
-            <span class="role">
+            <span class="developer-role">
                 مطور
             </span>
 
             <button
-                class="copy"
+                class="copy-btn"
                 onclick="copyUser('9.iji')">
                 نسخ Discord
             </button>
@@ -1341,16 +1544,14 @@ footer{
                 H
             </div>
 
-            <h3>
-                hamza_2011hh
-            </h3>
+            <h3>hamza_2011hh</h3>
 
-            <span class="role">
+            <span class="developer-role">
                 مطور
             </span>
 
             <button
-                class="copy"
+                class="copy-btn"
                 onclick="copyUser('hamza_2011hh')">
                 نسخ Discord
             </button>
@@ -1363,16 +1564,14 @@ footer{
                 H
             </div>
 
-            <h3>
-                halaath9
-            </h3>
+            <h3>halaath9</h3>
 
-            <span class="role">
+            <span class="developer-role">
                 مطور
             </span>
 
             <button
-                class="copy"
+                class="copy-btn"
                 onclick="copyUser('halaath9')">
                 نسخ Discord
             </button>
@@ -1383,37 +1582,45 @@ footer{
 
 </section>
 
+<!-- DISCORD -->
+
 <section class="section reveal">
 
     <div class="discord">
 
-        <h2>
-            انضم إلينا.
-        </h2>
+        <div class="discord-content">
 
-        <p>
-            ادخل إلى سيرفر Discord الرسمي
-            وكن جزءًا من مجتمع RAVOXN.
-        </p>
+            <h2>
+                كن جزءًا من الفكرة.
+            </h2>
 
-        <button
-            class="primary"
-            onclick="discord()">
-            دخول سيرفر Discord
-        </button>
+            <p>
+                انضم إلى مجتمع RAVOXN وتابع
+                المشاريع والتحديثات وكل شيء جديد.
+            </p>
+
+            <button
+                class="btn btn-black"
+                onclick="joinDiscord()">
+                دخول سيرفر Discord
+            </button>
+
+        </div>
 
     </div>
 
 </section>
 
-<footer>
+<!-- FOOTER -->
+
+<footer class="footer">
 
     <div class="footer-logo">
         RAVOXN
     </div>
 
     <div>
-        © 2026 RAVOXN
+        © 2026 RAVOXN — جميع الحقوق محفوظة
     </div>
 
 </footer>
@@ -1424,74 +1631,84 @@ footer{
 
 <script>
 
-/* رابط سيرفر Discord */
+/* =========================
+   رابط السيرفر
+========================= */
 
-const DISCORD_LINK =
+const DISCORD_SERVER =
 "https://discord.gg/jZ4UegK3c";
 
 
-/* الانتقال للأقسام */
+/* =========================
+   الانتقال
+========================= */
 
-function go(id){
+function scrollToId(id){
 
     const element =
         document.getElementById(id);
 
-    if(element){
+    if(!element) return;
 
-        element.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-
-    }
-
+    element.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
 }
 
 
-/* دخول Discord */
+/* =========================
+   Discord
+========================= */
 
-function discord(){
+function joinDiscord(){
 
     window.open(
-        DISCORD_LINK,
+        DISCORD_SERVER,
         "_blank"
     );
-
 }
 
 
-/* نسخ حساب Discord */
+/* =========================
+   نسخ Discord
+========================= */
 
 function copyUser(username){
 
-    navigator.clipboard
-        .writeText(username)
-        .then(() => {
+    if(
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    ){
 
-            showToast(
-                "تم نسخ " + username
-            );
+        navigator.clipboard
+            .writeText(username)
+            .then(() => {
 
-        })
-        .catch(() => {
+                showToast(
+                    "تم نسخ " + username
+                );
 
-            showToast(username);
+            });
 
-        });
+    }else{
 
+        showToast(username);
+
+    }
 }
 
 
-/* Toast */
+/* =========================
+   Toast
+========================= */
 
 function showToast(message){
 
     const toast =
         document.getElementById("toast");
 
-    toast.textContent =
-        message;
+    toast.textContent = message;
 
     toast.classList.add("show");
 
@@ -1500,11 +1717,12 @@ function showToast(message){
         toast.classList.remove("show");
 
     },2200);
-
 }
 
 
-/* Navbar */
+/* =========================
+   Navbar
+========================= */
 
 window.addEventListener(
     "scroll",
@@ -1524,13 +1742,17 @@ window.addEventListener(
         }
 
     },
-    {passive:true}
+    {
+        passive:true
+    }
 );
 
 
-/* Animation */
+/* =========================
+   Animation عند النزول
+========================= */
 
-const observer =
+const revealObserver =
 new IntersectionObserver(
     entries => {
 
@@ -1538,12 +1760,13 @@ new IntersectionObserver(
 
             if(entry.isIntersecting){
 
-                entry.target.classList.add("show");
-
-                observer.unobserve(
-                    entry.target
+                entry.target.classList.add(
+                    "visible"
                 );
 
+                revealObserver.unobserve(
+                    entry.target
+                );
             }
 
         });
@@ -1554,27 +1777,28 @@ new IntersectionObserver(
     }
 );
 
-
 document
     .querySelectorAll(".reveal")
     .forEach(element => {
 
-        observer.observe(element);
+        revealObserver.observe(element);
 
     });
 
 
-/* صوت الضغط */
+/* =========================
+   صوت الضغط
+========================= */
 
-let audio = null;
+let audioContext = null;
 
-function clickSound(){
+function playClick(){
 
     try{
 
-        if(!audio){
+        if(!audioContext){
 
-            audio =
+            audioContext =
                 new (
                     window.AudioContext ||
                     window.webkitAudioContext
@@ -1583,60 +1807,63 @@ function clickSound(){
         }
 
         const oscillator =
-            audio.createOscillator();
+            audioContext.createOscillator();
 
         const gain =
-            audio.createGain();
+            audioContext.createGain();
 
-        oscillator.type =
-            "sine";
+        oscillator.type = "sine";
 
         oscillator.frequency.setValueAtTime(
             500,
-            audio.currentTime
+            audioContext.currentTime
         );
 
         oscillator.frequency.exponentialRampToValueAtTime(
-            180,
-            audio.currentTime + .05
+            190,
+            audioContext.currentTime + .055
         );
 
         gain.gain.setValueAtTime(
-            .015,
-            audio.currentTime
+            .018,
+            audioContext.currentTime
         );
 
         gain.gain.exponentialRampToValueAtTime(
             .001,
-            audio.currentTime + .06
+            audioContext.currentTime + .065
         );
 
         oscillator.connect(gain);
 
         gain.connect(
-            audio.destination
+            audioContext.destination
         );
 
         oscillator.start();
 
         oscillator.stop(
-            audio.currentTime + .06
+            audioContext.currentTime + .065
         );
 
-    }catch(e){}
+    }catch(error){}
 
 }
 
 
-/* تشغيل الصوت */
+/* =========================
+   تفعيل صوت الأزرار
+========================= */
 
 document
-    .querySelectorAll("button")
-    .forEach(button => {
+    .querySelectorAll(
+        "button,.nav-links a"
+    )
+    .forEach(element => {
 
-        button.addEventListener(
+        element.addEventListener(
             "click",
-            clickSound
+            playClick
         );
 
     });
