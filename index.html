@@ -10,26 +10,18 @@
 
 <style>
 
-/* =====================================================
-   RAVOXN — NEW DESIGN
-===================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 
 :root{
     --bg:#080808;
     --surface:#101010;
     --surface2:#151515;
-    --surface3:#1b1b1b;
-
     --white:#ffffff;
     --text:#eeeeee;
     --muted:#858585;
     --muted2:#555555;
-
     --line:rgba(255,255,255,.09);
     --line-hover:rgba(255,255,255,.19);
-
     --radius:22px;
 }
 
@@ -46,9 +38,7 @@ html{
 body{
     background:var(--bg);
     color:var(--text);
-
     font-family:"Cairo",sans-serif;
-
     overflow-x:hidden;
 }
 
@@ -61,18 +51,14 @@ button{
     cursor:pointer;
 }
 
-/* =====================================================
-   SELECTION
-===================================================== */
-
 ::selection{
     background:white;
     color:black;
 }
 
-/* =====================================================
+/* ==============================
    SCROLLBAR
-===================================================== */
+============================== */
 
 ::-webkit-scrollbar{
     width:7px;
@@ -91,25 +77,21 @@ button{
     background:#555;
 }
 
-/* =====================================================
+/* ==============================
    BACKGROUND
-===================================================== */
+============================== */
 
 .background{
     position:fixed;
     inset:0;
-
     pointer-events:none;
-
     z-index:-1;
-
     overflow:hidden;
 }
 
 .grid{
     position:absolute;
     inset:0;
-
     opacity:.025;
 
     background-image:
@@ -128,16 +110,11 @@ button{
 
 .light{
     position:absolute;
-
     width:450px;
     height:450px;
-
     border-radius:50%;
-
     background:#fff;
-
     opacity:.025;
-
     filter:blur(100px);
 }
 
@@ -151,9 +128,9 @@ button{
     right:-350px;
 }
 
-/* =====================================================
+/* ==============================
    NAVBAR
-===================================================== */
+============================== */
 
 .navbar{
     position:fixed;
@@ -175,7 +152,6 @@ button{
     background:rgba(10,10,10,.84);
 
     border:1px solid var(--line);
-
     border-radius:18px;
 
     backdrop-filter:blur(12px);
@@ -190,7 +166,6 @@ button{
 
 .navbar.scrolled{
     top:10px;
-
     background:#0b0b0b;
 
     box-shadow:
@@ -199,31 +174,24 @@ button{
 
 .logo{
     font-size:19px;
-
     font-weight:900;
-
     letter-spacing:5px;
-
     color:white;
 }
 
 .nav-links{
     display:flex;
-
     gap:3px;
 }
 
 .nav-links a{
     color:#777;
-
     text-decoration:none;
 
     font-size:12px;
-
     font-weight:600;
 
     padding:9px 12px;
-
     border-radius:9px;
 
     transition:.2s;
@@ -231,15 +199,12 @@ button{
 
 .nav-links a:hover{
     color:white;
-
     background:#171717;
 }
 
 .nav-discord{
     border:0;
-
     background:white;
-
     color:#000;
 
     padding:10px 16px;
@@ -247,7 +212,6 @@ button{
     border-radius:10px;
 
     font-weight:800;
-
     font-size:12px;
 
     transition:.25s;
@@ -260,9 +224,9 @@ button{
         0 10px 30px rgba(255,255,255,.12);
 }
 
-/* =====================================================
+/* ==============================
    HERO
-===================================================== */
+============================== */
 
 .hero{
     min-height:850px;
@@ -272,9 +236,7 @@ button{
     margin:auto;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
@@ -290,21 +252,17 @@ button{
 
 .hero-mini{
     display:inline-flex;
-
     align-items:center;
-
     gap:8px;
 
     padding:7px 13px;
 
     border:1px solid var(--line);
-
     background:#ffffff05;
 
     border-radius:50px;
 
     color:#777;
-
     font-size:11px;
 
     animation:heroIn .7s ease;
@@ -315,7 +273,6 @@ button{
     height:6px;
 
     background:white;
-
     border-radius:50%;
 
     box-shadow:0 0 12px white;
@@ -334,8 +291,7 @@ button{
 
     color:white;
 
-    animation:
-        heroIn .9s ease;
+    animation:heroIn .9s ease;
 }
 
 .hero-subtitle{
@@ -347,8 +303,7 @@ button{
 
     font-weight:600;
 
-    animation:
-        heroIn 1.1s ease;
+    animation:heroIn 1.1s ease;
 }
 
 .hero-subtitle strong{
@@ -366,8 +321,7 @@ button{
 
     line-height:2;
 
-    animation:
-        heroIn 1.3s ease;
+    animation:heroIn 1.3s ease;
 }
 
 .hero-actions{
@@ -379,13 +333,11 @@ button{
 
     margin-top:30px;
 
-    animation:
-        heroIn 1.5s ease;
+    animation:heroIn 1.5s ease;
 }
 
 .btn-primary,
 .btn-secondary{
-
     border-radius:11px;
 
     padding:13px 22px;
@@ -399,7 +351,6 @@ button{
 
 .btn-primary{
     background:white;
-
     color:#000;
 
     border:1px solid white;
@@ -432,7 +383,6 @@ button{
     position:absolute;
 
     bottom:45px;
-
     left:50%;
 
     transform:translateX(-50%);
@@ -453,7 +403,6 @@ button{
     display:block;
 
     width:1px;
-
     height:30px;
 
     background:#333;
@@ -461,9 +410,9 @@ button{
     margin:10px auto 0;
 }
 
-/* =====================================================
-   SECTION
-===================================================== */
+/* ==============================
+   SECTIONS
+============================== */
 
 .section{
     width:min(1180px,calc(100% - 32px));
@@ -477,7 +426,6 @@ button{
     display:flex;
 
     align-items:end;
-
     justify-content:space-between;
 
     gap:30px;
@@ -515,9 +463,9 @@ button{
     font-size:13px;
 }
 
-/* =====================================================
-   INTRO CARD
-===================================================== */
+/* ==============================
+   ABOUT
+============================== */
 
 .intro{
     display:grid;
@@ -539,7 +487,6 @@ button{
     padding:60px;
 
     display:flex;
-
     justify-content:center;
 
     flex-direction:column;
@@ -589,7 +536,6 @@ button{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     overflow:hidden;
@@ -643,9 +589,9 @@ button{
         0 0 60px rgba(255,255,255,.12);
 }
 
-/* =====================================================
+/* ==============================
    STATS
-===================================================== */
+============================== */
 
 .stats{
     display:grid;
@@ -684,9 +630,9 @@ button{
     margin-top:3px;
 }
 
-/* =====================================================
+/* ==============================
    FEATURES
-===================================================== */
+============================== */
 
 .features{
     display:grid;
@@ -743,13 +689,11 @@ button{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:12px;
 
     background:white;
-
     color:black;
 
     font-size:17px;
@@ -773,122 +717,130 @@ button{
     margin-top:8px;
 }
 
-/* =====================================================
-   PROJECTS
-===================================================== */
+/* ==============================
+   SERVICES
+============================== */
 
-.projects{
+.services{
     display:grid;
 
     grid-template-columns:
         repeat(2,1fr);
 
-    gap:15px;
+    gap:14px;
 }
 
-.project{
-    min-height:350px;
-
+.service{
     position:relative;
+
+    min-height:240px;
+
+    padding:30px;
 
     overflow:hidden;
 
     border:1px solid var(--line);
 
-    border-radius:22px;
+    border-radius:20px;
 
-    background:#0d0d0d;
+    background:#0e0e0e;
 
-    padding:28px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:flex-end;
-
-    transition:.35s;
+    transition:.3s;
 }
 
-.project:hover{
-    transform:translateY(-8px);
+.service:hover{
+    transform:translateY(-7px);
 
     border-color:var(--line-hover);
+
+    background:#111;
 }
 
-.project-background{
-    position:absolute;
+.service-number{
+    color:#444;
 
-    inset:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    overflow:hidden;
-}
-
-.project-background::before{
-    content:"";
-
-    width:260px;
-    height:260px;
-
-    border:1px solid #ffffff13;
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 100px #ffffff06;
-}
-
-.project-background span{
-    position:absolute;
-
-    font-size:72px;
-
-    font-weight:900;
-
-    letter-spacing:-6px;
-
-    color:#ffffff07;
-}
-
-.project-content{
-    position:relative;
-
-    z-index:2;
-}
-
-.project-tag{
-    color:#555;
-
-    font-size:10px;
+    font-size:11px;
 
     letter-spacing:2px;
 }
 
-.project h3{
-    margin-top:7px;
+.service-icon{
+    position:absolute;
 
-    font-size:31px;
+    top:25px;
+    left:30px;
+
+    width:50px;
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#181818;
+
+    border:1px solid var(--line);
+
+    color:#ddd;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.service:hover .service-icon{
+    background:white;
+
+    color:black;
+
+    transform:rotate(-6deg) scale(1.05);
+}
+
+.service h3{
+    margin-top:55px;
+
+    font-size:24px;
 
     letter-spacing:-1px;
 }
 
-.project p{
+.service p{
+    margin-top:10px;
+
+    max-width:500px;
+
     color:#666;
 
     font-size:12px;
 
-    margin-top:4px;
+    line-height:2;
 }
 
-/* =====================================================
+.service-arrow{
+    position:absolute;
+
+    bottom:25px;
+    left:30px;
+
+    color:#444;
+
+    font-size:20px;
+
+    transition:.3s;
+}
+
+.service:hover .service-arrow{
+    color:white;
+
+    transform:translateX(-5px);
+}
+
+/* ==============================
    DEVELOPERS
-===================================================== */
+============================== */
 
 .developers{
     display:grid;
@@ -924,7 +876,6 @@ button{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
@@ -989,9 +940,9 @@ button{
     color:black;
 }
 
-/* =====================================================
+/* ==============================
    DISCORD
-===================================================== */
+============================== */
 
 .discord{
     position:relative;
@@ -1059,9 +1010,9 @@ button{
     font-size:13px;
 }
 
-/* =====================================================
+/* ==============================
    FOOTER
-===================================================== */
+============================== */
 
 .footer{
     width:min(1180px,calc(100% - 32px));
@@ -1091,9 +1042,9 @@ button{
     letter-spacing:3px;
 }
 
-/* =====================================================
-   REVEAL ANIMATION
-===================================================== */
+/* ==============================
+   REVEAL
+============================== */
 
 .reveal{
     opacity:0;
@@ -1111,15 +1062,14 @@ button{
     transform:translateY(0);
 }
 
-/* =====================================================
+/* ==============================
    TOAST
-===================================================== */
+============================== */
 
 .toast{
     position:fixed;
 
     bottom:25px;
-
     left:50%;
 
     transform:
@@ -1153,9 +1103,9 @@ button{
         translate(-50%,0);
 }
 
-/* =====================================================
+/* ==============================
    ANIMATIONS
-===================================================== */
+============================== */
 
 @keyframes heroIn{
 
@@ -1187,9 +1137,9 @@ button{
 
 }
 
-/* =====================================================
+/* ==============================
    MOBILE
-===================================================== */
+============================== */
 
 @media(max-width:900px){
 
@@ -1225,7 +1175,7 @@ button{
         grid-template-columns:1fr;
     }
 
-    .projects{
+    .services{
         grid-template-columns:1fr;
     }
 
@@ -1253,6 +1203,7 @@ button{
 
     .hero-title{
         font-size:65px;
+
         letter-spacing:-5px;
     }
 
@@ -1281,7 +1232,8 @@ button{
     }
 
     .stats{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .section{
@@ -1304,9 +1256,9 @@ button{
 <body>
 
 
-<!-- =====================================================
+<!-- ==============================
      BACKGROUND
-===================================================== -->
+============================== -->
 
 <div class="background">
 
@@ -1319,11 +1271,13 @@ button{
 </div>
 
 
-<!-- =====================================================
+<!-- ==============================
      NAVBAR
-===================================================== -->
+============================== -->
 
-<nav class="navbar" id="navbar">
+<nav
+    class="navbar"
+    id="navbar">
 
     <div class="logo">
         RAVOXN
@@ -1340,8 +1294,8 @@ button{
             عن RAVOXN
         </a>
 
-        <a href="#المشاريع">
-            المشاريع
+        <a href="#ماذا-نقدم">
+            ماذا نقدم
         </a>
 
         <a href="#المطورون">
@@ -1362,9 +1316,9 @@ button{
 </nav>
 
 
-<!-- =====================================================
+<!-- ==============================
      HERO
-===================================================== -->
+============================== -->
 
 <header
     class="hero"
@@ -1408,9 +1362,9 @@ button{
 
             <button
                 class="btn-primary"
-                onclick="scrollToId('المشاريع')">
+                onclick="scrollToId('ماذا-نقدم')">
 
-                استكشف المشاريع
+                ماذا نقدم؟
 
             </button>
 
@@ -1429,17 +1383,15 @@ button{
 
 
     <div class="hero-scroll">
-
         SCROLL
-
     </div>
 
 </header>
 
 
-<!-- =====================================================
+<!-- ==============================
      ABOUT
-===================================================== -->
+============================== -->
 
 <section
     class="section reveal"
@@ -1501,9 +1453,9 @@ button{
 
                 <button
                     class="btn-primary"
-                    onclick="scrollToId('المشاريع')">
+                    onclick="scrollToId('ماذا-نقدم')">
 
-                    المشاريع
+                    ماذا نقدم؟
 
                 </button>
 
@@ -1598,9 +1550,9 @@ button{
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
      FEATURES
-===================================================== -->
+============================== -->
 
 <section class="section reveal">
 
@@ -1636,13 +1588,9 @@ button{
 
             <div class="feature-top">
 
-                <span>
-                    01
-                </span>
+                <span>01</span>
 
-                <span>
-                    DESIGN
-                </span>
+                <span>DESIGN</span>
 
             </div>
 
@@ -1671,13 +1619,9 @@ button{
 
             <div class="feature-top">
 
-                <span>
-                    02
-                </span>
+                <span>02</span>
 
-                <span>
-                    PERFORMANCE
-                </span>
+                <span>PERFORMANCE</span>
 
             </div>
 
@@ -1694,8 +1638,8 @@ button{
 
             <p>
 
-                المؤثرات محسوبة حتى تحصل
-                على شكل جميل بدون التضحية بالأداء.
+                المؤثرات محسوبة حتى نحافظ
+                على سرعة الموقع وسلاسة الاستخدام.
 
             </p>
 
@@ -1706,13 +1650,9 @@ button{
 
             <div class="feature-top">
 
-                <span>
-                    03
-                </span>
+                <span>03</span>
 
-                <span>
-                    FUTURE
-                </span>
+                <span>FUTURE</span>
 
             </div>
 
@@ -1741,24 +1681,24 @@ button{
 </section>
 
 
-<!-- =====================================================
-     PROJECTS
-===================================================== -->
+<!-- ==============================
+     SERVICES
+============================== -->
 
 <section
     class="section reveal"
-    id="المشاريع">
+    id="ماذا-نقدم">
 
     <div class="section-head">
 
         <div>
 
             <div class="section-number">
-                03 / المشاريع
+                03 / ماذا نقدم
             </div>
 
             <h2 class="section-title">
-                ماذا نصنع؟
+                ماذا نقدم؟
             </h2>
 
         </div>
@@ -1766,144 +1706,158 @@ button{
 
         <p class="section-description">
 
-            مشاريع مختلفة، لكن الهدف واحد:
-            تقديم تجربة تستحق التجربة.
+            نحول الأفكار إلى تجارب رقمية،
+            ونبني الأنظمة والمواقع والألعاب
+            بطريقة تناسب كل مشروع.
 
         </p>
 
     </div>
 
 
-    <div class="projects">
+    <div class="services">
 
 
-        <div class="project">
+        <div class="service">
 
-            <div class="project-background">
-
-                <span>
-                    RAVEN
-                </span>
-
+            <div class="service-number">
+                01 / GAMES
             </div>
 
 
-            <div class="project-content">
-
-                <div class="project-tag">
-                    ROBLOX
-                </div>
-
-                <h3>
-                    Raven
-                </h3>
-
-                <p>
-                    تجربة عسكرية وأنظمة مخصصة.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-background">
-
-                <span>
-                    WEB
-                </span>
-
+            <div class="service-icon">
+                ◆
             </div>
 
 
-            <div class="project-content">
+            <h3>
+                تطوير الألعاب
+            </h3>
 
-                <div class="project-tag">
-                    WEB
-                </div>
 
-                <h3>
-                    RAVOXN Web
-                </h3>
+            <p>
 
-                <p>
-                    الموقع الرسمي للاستوديو.
-                </p>
+                نصنع ألعابًا وتجارب تفاعلية
+                مع أنظمة مخصصة واهتمام بالتفاصيل
+                التي تجعل تجربة اللاعب أفضل.
 
+            </p>
+
+
+            <div class="service-arrow">
+                ←
             </div>
 
         </div>
 
 
-        <div class="project">
+        <div class="service">
 
-            <div class="project-background">
-
-                <span>
-                    GAME
-                </span>
-
+            <div class="service-number">
+                02 / SYSTEMS
             </div>
 
 
-            <div class="project-content">
+            <div class="service-icon">
+                ◈
+            </div>
 
-                <div class="project-tag">
-                    GAMES
-                </div>
 
-                <h3>
-                    ألعاب RAVOXN
-                </h3>
+            <h3>
+                تطوير الأنظمة
+            </h3>
 
-                <p>
-                    تجارب وألعاب جديدة قادمة.
-                </p>
 
+            <p>
+
+                أنظمة متقدمة ومترابطة تساعد
+                المشاريع على العمل بشكل منظم
+                وقابل للتطوير.
+
+            </p>
+
+
+            <div class="service-arrow">
+                ←
+            </div>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-number">
+                03 / WEB
+            </div>
+
+
+            <div class="service-icon">
+                ◇
+            </div>
+
+
+            <h3>
+                تصميم المواقع
+            </h3>
+
+
+            <p>
+
+                مواقع حديثة وسريعة بواجهات
+                واضحة وتجربة استخدام مرتبة
+                ومتوافقة مع مختلف الأجهزة.
+
+            </p>
+
+
+            <div class="service-arrow">
+                ←
             </div>
 
         </div>
 
 
-        <div class="project">
+        <div class="service">
 
-            <div class="project-background">
-
-                <span>
-                    SYSTEM
-                </span>
-
+            <div class="service-number">
+                04 / DIGITAL
             </div>
 
 
-            <div class="project-content">
+            <div class="service-icon">
+                +
+            </div>
 
-                <div class="project-tag">
-                    SYSTEMS
-                </div>
 
-                <h3>
-                    الأنظمة
-                </h3>
+            <h3>
+                التجارب الرقمية
+            </h3>
 
-                <p>
-                    أنظمة وأدوات مخصصة للمشاريع.
-                </p>
 
+            <p>
+
+                نحول الأفكار الجديدة إلى
+                تجارب مختلفة تجمع بين التصميم
+                والبرمجة والإبداع.
+
+            </p>
+
+
+            <div class="service-arrow">
+                ←
             </div>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
      DEVELOPERS
-===================================================== -->
+============================== -->
 
 <section
     class="section reveal"
@@ -2041,9 +1995,9 @@ button{
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
      DISCORD
-===================================================== -->
+============================== -->
 
 <section class="section reveal">
 
@@ -2059,7 +2013,7 @@ button{
             <p>
 
                 انضم إلى مجتمع RAVOXN وتابع
-                المشاريع والتحديثات وكل شيء جديد.
+                التحديثات وكل شيء جديد.
 
             </p>
 
@@ -2079,9 +2033,9 @@ button{
 </section>
 
 
-<!-- =====================================================
+<!-- ==============================
      FOOTER
-===================================================== -->
+============================== -->
 
 <footer class="footer">
 
@@ -2097,8 +2051,6 @@ button{
 </footer>
 
 
-<!-- TOAST -->
-
 <div
     class="toast"
     id="toast">
@@ -2110,21 +2062,17 @@ button{
 
 <script>
 
-/* =====================================================
+/* ==============================
    إعدادات الموقع
-===================================================== */
-
-/*
-   ضع رابط سيرفر Discord هنا
-*/
+============================== */
 
 const DISCORD_SERVER =
 "https://discord.gg/YOUR-SERVER";
 
 
-/* =====================================================
+/* ==============================
    التنقل
-===================================================== */
+============================== */
 
 function scrollToId(id){
 
@@ -2141,9 +2089,9 @@ function scrollToId(id){
 }
 
 
-/* =====================================================
+/* ==============================
    Discord
-===================================================== */
+============================== */
 
 function joinDiscord(){
 
@@ -2158,6 +2106,7 @@ function joinDiscord(){
         );
 
         return;
+
     }
 
     window.open(
@@ -2168,9 +2117,9 @@ function joinDiscord(){
 }
 
 
-/* =====================================================
-   نسخ Discord
-===================================================== */
+/* ==============================
+   نسخ الحساب
+============================== */
 
 function copyUser(username){
 
@@ -2185,18 +2134,16 @@ function copyUser(username){
         })
         .catch(() => {
 
-            showToast(
-                username
-            );
+            showToast(username);
 
         });
 
 }
 
 
-/* =====================================================
+/* ==============================
    Toast
-===================================================== */
+============================== */
 
 function showToast(message){
 
@@ -2217,22 +2164,18 @@ function showToast(message){
 }
 
 
-/* =====================================================
-   Navbar عند النزول
-===================================================== */
+/* ==============================
+   Navbar
+============================== */
 
 window.addEventListener(
     "scroll",
     () => {
 
         const navbar =
-            document.getElementById(
-                "navbar"
-            );
+            document.getElementById("navbar");
 
-        if(
-            window.scrollY > 60
-        ){
+        if(window.scrollY > 60){
 
             navbar.classList.add(
                 "scrolled"
@@ -2253,34 +2196,32 @@ window.addEventListener(
 );
 
 
-/* =====================================================
+/* ==============================
    Animation عند النزول
-===================================================== */
+============================== */
 
 const revealObserver =
 new IntersectionObserver(
     entries => {
 
-        entries.forEach(
-            entry => {
+        entries.forEach(entry => {
 
-                if(
-                    entry.isIntersecting
-                ){
+            if(
+                entry.isIntersecting
+            ){
 
-                    entry.target
-                        .classList
-                        .add("visible");
+                entry.target
+                    .classList
+                    .add("visible");
 
-                    revealObserver
-                        .unobserve(
-                            entry.target
-                        );
-
-                }
+                revealObserver
+                    .unobserve(
+                        entry.target
+                    );
 
             }
-        );
+
+        });
 
     },
     {
@@ -2300,10 +2241,9 @@ document
     });
 
 
-/* =====================================================
+/* ==============================
    صوت الضغط
-   خفيف جدًا
-===================================================== */
+============================== */
 
 let audioContext = null;
 
@@ -2366,21 +2306,18 @@ function playClick(){
             audioContext.currentTime + .065
         );
 
-    }catch(error){
-
-        /* تجاهل الخطأ */
-    }
+    }catch(error){}
 
 }
 
 
-/* =====================================================
-   إضافة صوت للأزرار
-===================================================== */
+/* ==============================
+   تفعيل الصوت
+============================== */
 
 document
     .querySelectorAll(
-        "button, .nav-links a"
+        "button,.nav-links a"
     )
     .forEach(element => {
 
@@ -2390,7 +2327,6 @@ document
         );
 
     });
-
 
 </script>
 
