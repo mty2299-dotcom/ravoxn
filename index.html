@@ -3,7 +3,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>RAVOXN — الاستوديو الرقمي</title>
 
@@ -20,7 +20,6 @@
     --bg:#f5f5f5;
     --white:#fff;
     --black:#080808;
-    --gray:#777;
     --border:#ddd;
     --gold:#d7a83e;
 }
@@ -63,7 +62,6 @@ a{
         linear-gradient(#ddd 1px,transparent 1px),
         linear-gradient(90deg,#ddd 1px,transparent 1px);
     background-size:70px 70px;
-    mask-image:linear-gradient(to bottom,#000,transparent 85%);
 }
 
 .glow{
@@ -476,7 +474,7 @@ a{
     margin-top:4px;
 }
 
-/* FOUNDERS GOLD */
+/* FOUNDERS */
 
 .founder{
     border-color:#c99a32;
@@ -486,7 +484,12 @@ a{
 }
 
 .founder .avatar{
-    background:linear-gradient(135deg,#8d671d,#f3d477,#9d741f);
+    background:linear-gradient(
+        135deg,
+        #8d671d,
+        #f3d477,
+        #9d741f
+    );
     color:#17110a;
     box-shadow:0 0 25px rgba(215,168,62,.35);
 }
@@ -652,30 +655,6 @@ a{
     margin-left:6px;
 }
 
-/* TOAST */
-
-.toast{
-    position:fixed;
-    bottom:25px;
-    left:50%;
-    transform:translate(-50%,30px);
-    padding:12px 18px;
-    background:#080808;
-    color:white;
-    border-radius:11px;
-    font-size:11px;
-    font-weight:800;
-    opacity:0;
-    pointer-events:none;
-    transition:.25s;
-    z-index:9999;
-}
-
-.toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
-}
-
 /* MOBILE */
 
 @media(max-width:900px){
@@ -783,9 +762,7 @@ a{
         <div class="user-box" id="userBox">
             <img class="user-avatar" id="userAvatar">
             <span class="user-name" id="userName"></span>
-            <button class="logout" onclick="logout()">
-                خروج
-            </button>
+            <button class="logout" onclick="logout()">خروج</button>
         </div>
 
     </div>
@@ -830,9 +807,7 @@ a{
 
     </div>
 
-    <div class="scroll">
-        SCROLL
-    </div>
+    <div class="scroll">SCROLL</div>
 
 </header>
 
@@ -856,9 +831,7 @@ a{
 
         <div class="about-text">
 
-            <div class="about-label">
-                RAVOXN STUDIO
-            </div>
+            <div class="about-label">RAVOXN STUDIO</div>
 
             <h2>
                 نصنعها<br>
@@ -879,9 +852,7 @@ a{
             <div class="circle c2"></div>
             <div class="circle c3"></div>
 
-            <div class="visual-logo">
-                R
-            </div>
+            <div class="visual-logo">R</div>
 
         </div>
 
@@ -993,8 +964,6 @@ a{
 
     <div class="developers">
 
-        <!-- المؤسسين -->
-
         <div class="developer founder">
 
             <div class="avatar">Z</div>
@@ -1019,17 +988,13 @@ a{
 
         </div>
 
-        <!-- المطورين -->
-
         <div class="developer">
 
             <div class="avatar">H</div>
 
             <h3>hamza_2011hh</h3>
 
-            <span class="role">
-                مطور
-            </span>
+            <span class="role">مطور</span>
 
         </div>
 
@@ -1039,9 +1004,7 @@ a{
 
             <h3>halaath9</h3>
 
-            <span class="role">
-                مطور
-            </span>
+            <span class="role">مطور</span>
 
         </div>
 
@@ -1053,9 +1016,7 @@ a{
 
     <div class="discord">
 
-        <h2>
-            كن جزءًا من الفكرة.
-        </h2>
+        <h2>كن جزءًا من الفكرة.</h2>
 
         <p>
             انضم إلى مجتمع RAVOXN وتابع
@@ -1084,7 +1045,7 @@ a{
 
 </footer>
 
-<!-- ترحيب -->
+<!-- WELCOME -->
 
 <div class="modal" id="welcomeModal">
 
@@ -1118,14 +1079,14 @@ a{
 
 </div>
 
-<!-- رسالة لا -->
+<!-- WHY -->
 
 <div class="modal" id="whyModal">
 
     <div class="modal-box">
 
         <h2>
-            ليش ما تدخل؟
+            لماذا لا تدخل؟
         </h2>
 
         <p>
@@ -1148,37 +1109,31 @@ a{
 
 </div>
 
-<div class="toast" id="toast"></div>
-
 <script>
 
-/* =========================
-   WORKER
-========================= */
+/* =========================================
+   RAVOXN CONFIG
+========================================= */
 
 const WORKER_URL =
     "https://ravoxn-auth.mty2299.workers.dev";
 
-
-/* =========================
-   DISCORD
-========================= */
-
 const DISCORD_SERVER =
     "https://discord.gg/jZ4UegK3c";
 
-
-/* الأشخاص المسموح لهم بمشاهدة العدد */
-
+/*
+   الأشخاص الذين تريد أن يكون لهم
+   الوصول إلى معلومات الأعضاء الخاصة
+*/
 const ALLOWED_VIEWERS = [
     "1409043694773862475",
     "1453490600086081646"
 ];
 
 
-/* =========================
+/* =========================================
    LOGIN
-========================= */
+========================================= */
 
 function login(){
 
@@ -1188,9 +1143,9 @@ function login(){
 }
 
 
-/* =========================
+/* =========================================
    LOGOUT
-========================= */
+========================================= */
 
 function logout(){
 
@@ -1200,28 +1155,30 @@ function logout(){
 }
 
 
-/* =========================
-   GET USER
-========================= */
+/* =========================================
+   CHECK LOGIN
+========================================= */
 
 async function checkLogin(){
 
     try{
 
-        const response =
-            await fetch(
-                WORKER_URL + "/api/me",
-                {
-                    credentials:"include"
-                }
-            );
+        const response = await fetch(
+            WORKER_URL + "/api/me",
+            {
+                credentials:"include"
+            }
+        );
 
-        const data =
-            await response.json();
+        if(!response.ok){
+            return null;
+        }
+
+        const data = await response.json();
 
         if(
             data &&
-            data.authenticated &&
+            data.authenticated === true &&
             data.user
         ){
 
@@ -1233,7 +1190,10 @@ async function checkLogin(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "RAVOXN LOGIN ERROR:",
+            error
+        );
 
     }
 
@@ -1242,74 +1202,86 @@ async function checkLogin(){
 }
 
 
-/* =========================
+/* =========================================
    SHOW USER
-========================= */
+========================================= */
 
 function showUser(user){
 
-    document
-        .getElementById("loginButton")
-        .style.display = "none";
+    const loginButton =
+        document.getElementById("loginButton");
 
-    const box =
+    const userBox =
         document.getElementById("userBox");
 
-    box.classList.add("show");
+    const userName =
+        document.getElementById("userName");
 
-    document
-        .getElementById("userName")
-        .textContent =
-            user.username || "Discord User";
-
-    const avatar =
+    const userAvatar =
         document.getElementById("userAvatar");
+
+    loginButton.style.display = "none";
+
+    userBox.classList.add("show");
+
+    userName.textContent =
+        user.username || "Discord User";
 
     if(user.avatar){
 
-        avatar.src =
-            user.avatar;
+        userAvatar.src = user.avatar;
+        userAvatar.style.display = "block";
 
     }else{
 
-        avatar.style.display = "none";
+        userAvatar.style.display = "none";
 
     }
 
 }
 
 
-/* =========================
+/* =========================================
    WELCOME
-========================= */
+========================================= */
 
 function showWelcome(){
 
+    const modal =
+        document.getElementById("welcomeModal");
+
+    if(!modal){
+        return;
+    }
+
+    /*
+       يظهر الترحيب كل مرة عند فتح الموقع
+       إلى أن يختار المستخدم نعم.
+    */
+
     if(
         localStorage.getItem(
-            "ravoxn_welcome_seen"
-        )
+            "ravoxn_welcome_joined"
+        ) === "1"
     ){
 
         return;
 
     }
 
-    document
-        .getElementById("welcomeModal")
-        .classList.add("show");
+    modal.classList.add("show");
 
 }
 
 
-/* =========================
-   YES
-========================= */
+/* =========================================
+   YES — نعم ألعب
+========================================= */
 
 function yesJoin(){
 
     localStorage.setItem(
-        "ravoxn_welcome_seen",
+        "ravoxn_welcome_joined",
         "1"
     );
 
@@ -1325,9 +1297,9 @@ function yesJoin(){
 }
 
 
-/* =========================
-   NO
-========================= */
+/* =========================================
+   NO — لا ألعب
+========================================= */
 
 function noJoin(){
 
@@ -1342,9 +1314,9 @@ function noJoin(){
 }
 
 
-/* =========================
+/* =========================================
    CLOSE WHY
-========================= */
+========================================= */
 
 function closeWhy(){
 
@@ -1355,9 +1327,9 @@ function closeWhy(){
 }
 
 
-/* =========================
-   DISCORD
-========================= */
+/* =========================================
+   DISCORD BUTTON
+========================================= */
 
 function joinDiscord(){
 
@@ -1369,9 +1341,9 @@ function joinDiscord(){
 }
 
 
-/* =========================
+/* =========================================
    LANGUAGE
-========================= */
+========================================= */
 
 let english = false;
 
@@ -1389,6 +1361,22 @@ function toggleLanguage(){
         document.documentElement.lang = "en";
         document.documentElement.dir = "ltr";
 
+        document.querySelector(".nav-links a:nth-child(1)")
+            .textContent = "Home";
+
+        document.querySelector(".nav-links a:nth-child(2)")
+            .textContent = "About RAVOXN";
+
+        document.querySelector(".nav-links a:nth-child(3)")
+            .textContent = "Services";
+
+        document.querySelector(".nav-links a:nth-child(4)")
+            .textContent = "Developers";
+
+        document.querySelector(".badge")
+            .lastChild.textContent =
+            " Independent Digital Studio";
+
         document.querySelector(".hero-subtitle strong")
             .textContent =
             "We create ideas. We build experiences.";
@@ -1397,13 +1385,45 @@ function toggleLanguage(){
             .textContent =
             "We develop games, websites, systems and digital experiences with fresh ideas and a clean approach.";
 
-        document.querySelector(".about-label")
+        document.querySelector(".about .about-label")
             .textContent =
             "RAVOXN STUDIO";
 
         document.querySelector("#services .title")
             .textContent =
-            "What we offer";
+            "What We Offer";
+
+        document.querySelector("#developers .title")
+            .textContent =
+            "Developers";
+
+        document.querySelector(".discord h2")
+            .textContent =
+            "Be Part Of The Idea.";
+
+        document.querySelector(".discord p")
+            .textContent =
+            "Join the RAVOXN community and follow our projects, updates and everything new.";
+
+        document.querySelector(".discord button")
+            .textContent =
+            "Join Discord";
+
+        document.querySelector("#welcomeTitle")
+            .textContent =
+            "Welcome to RAVOXN";
+
+        document.querySelector("#welcomeText")
+            .textContent =
+            "Do you want to enter RAVOXN Sector?";
+
+        document.querySelector("#welcomeModal .black")
+            .textContent =
+            "Yes, I want to play";
+
+        document.querySelector("#welcomeModal .white")
+            .textContent =
+            "No, I don't play";
 
     }else{
 
@@ -1414,36 +1434,13 @@ function toggleLanguage(){
 }
 
 
-/* =========================
-   TOAST
-========================= */
-
-function toast(message){
-
-    const element =
-        document.getElementById("toast");
-
-    element.textContent =
-        message;
-
-    element.classList.add("show");
-
-    setTimeout(
-        () =>
-            element.classList.remove("show"),
-        2200
-    );
-
-}
-
-
-/* =========================
+/* =========================================
    NAVBAR
-========================= */
+========================================= */
 
 window.addEventListener(
     "scroll",
-    () => {
+    function(){
 
         const nav =
             document.getElementById("navbar");
@@ -1465,38 +1462,44 @@ window.addEventListener(
 );
 
 
-/* =========================
+/* =========================================
    START
-========================= */
+========================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    async () => {
+    async function(){
 
+        console.log(
+            "RAVOXN WEBSITE STARTED"
+        );
+
+        /*
+           تسجيل الدخول
+        */
         const user =
             await checkLogin();
 
         /*
-         نعرض الترحيب بعد تحميل الصفحة.
+           الترحيب
         */
-
         setTimeout(
             showWelcome,
             700
         );
 
         /*
-         إذا كان أحد الشخصين المحددين
-         سيتم التعامل معه كمستخدم خاص.
+           المستخدمون الخاصون
         */
-
         if(
             user &&
-            ALLOWED_VIEWERS.includes(user.id)
+            ALLOWED_VIEWERS.includes(
+                String(user.id)
+            )
         ){
 
             console.log(
-                "RAVOXN privileged viewer:",
+                "RAVOXN PRIVILEGED VIEWER:",
                 user.id
             );
 
