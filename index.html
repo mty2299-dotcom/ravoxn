@@ -1,8 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>RAVOXN — الاستوديو الرقمي</title>
 
@@ -10,9 +11,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
+}
+
+:root{
+    --bg:#f5f5f5;
+    --white:#fff;
+    --black:#080808;
+    --gray:#777;
+    --border:#ddd;
+    --gold:#d7a83e;
 }
 
 html{
@@ -20,28 +30,28 @@ html{
 }
 
 body{
-    font-family:"Cairo",sans-serif;
-    background:#f4f4f4;
+    font-family:Cairo,sans-serif;
+    background:var(--bg);
     color:#111;
     overflow-x:hidden;
 }
 
-button,a{
-    font-family:inherit;
-}
-
 button{
+    font-family:inherit;
     cursor:pointer;
 }
 
 a{
     text-decoration:none;
+    color:inherit;
 }
+
+/* BACKGROUND */
 
 .background{
     position:fixed;
     inset:0;
-    z-index:-2;
+    z-index:-1;
     overflow:hidden;
 }
 
@@ -49,38 +59,30 @@ a{
     position:absolute;
     inset:0;
     opacity:.35;
-
     background-image:
         linear-gradient(#ddd 1px,transparent 1px),
         linear-gradient(90deg,#ddd 1px,transparent 1px);
-
     background-size:70px 70px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 80%
-    );
+    mask-image:linear-gradient(to bottom,#000,transparent 85%);
 }
 
 .glow{
     position:absolute;
-    width:450px;
-    height:450px;
+    width:400px;
+    height:400px;
+    background:#fff;
     border-radius:50%;
-    background:white;
     filter:blur(100px);
-    opacity:.8;
 }
 
 .glow.one{
-    top:-300px;
-    left:20%;
+    top:-250px;
+    left:15%;
 }
 
 .glow.two{
-    top:50%;
-    right:-350px;
+    right:-250px;
+    top:45%;
 }
 
 /* NAVBAR */
@@ -90,43 +92,42 @@ a{
     top:18px;
     left:50%;
     transform:translateX(-50%);
-
     width:min(1180px,calc(100% - 30px));
     height:66px;
-
+    padding:0 18px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    padding:0 18px;
-
     background:rgba(255,255,255,.9);
-    border:1px solid #dedede;
+    border:1px solid var(--border);
     border-radius:18px;
-
     backdrop-filter:blur(18px);
-
     z-index:1000;
+    transition:.3s;
+}
+
+.navbar.scrolled{
+    top:10px;
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
 }
 
 .logo{
-    font-size:19px;
     font-weight:900;
+    font-size:19px;
     letter-spacing:5px;
 }
 
 .nav-links{
     display:flex;
-    gap:3px;
+    gap:4px;
 }
 
 .nav-links a{
+    padding:9px 13px;
+    border-radius:9px;
     color:#777;
     font-size:12px;
     font-weight:700;
-    padding:9px 13px;
-    border-radius:9px;
-    transition:.2s;
 }
 
 .nav-links a:hover{
@@ -134,68 +135,43 @@ a{
     background:#eee;
 }
 
-.nav-actions{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.lang-btn,
 .login-btn{
     border:0;
+    padding:10px 17px;
     border-radius:10px;
-    padding:10px 15px;
-    font-size:12px;
-    font-weight:800;
-}
-
-.lang-btn{
-    background:#eee;
-    color:#111;
-}
-
-.login-btn{
     background:#080808;
     color:white;
+    font-weight:800;
+    font-size:12px;
+    transition:.25s;
 }
 
-.login-btn:hover,
-.lang-btn:hover{
+.login-btn:hover{
     transform:translateY(-2px);
 }
 
 /* HERO */
 
 .hero{
-    min-height:850px;
     width:min(1180px,calc(100% - 30px));
+    min-height:850px;
     margin:auto;
-
     display:flex;
-    align-items:center;
     justify-content:center;
-
+    align-items:center;
     text-align:center;
-
     position:relative;
-    padding:150px 0 100px;
-}
-
-.hero-content{
-    width:100%;
+    padding:140px 0 100px;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
     gap:8px;
-
     padding:7px 14px;
-
-    background:#fff;
-    border:1px solid #dedede;
+    border:1px solid var(--border);
+    background:white;
     border-radius:50px;
-
     color:#777;
     font-size:11px;
 }
@@ -203,39 +179,34 @@ a{
 .badge-dot{
     width:6px;
     height:6px;
-    background:#111;
     border-radius:50%;
+    background:#111;
 }
 
 .hero h1{
     margin-top:22px;
-
     font-size:clamp(75px,14vw,175px);
     line-height:.85;
-
     letter-spacing:-11px;
     font-weight:900;
 }
 
 .hero-subtitle{
     margin-top:27px;
-
     font-size:clamp(15px,2vw,21px);
     font-weight:700;
-
     color:#555;
 }
 
 .hero-description{
     max-width:610px;
-    margin:15px auto 0;
-
+    margin:15px auto;
     color:#888;
     font-size:13px;
     line-height:2;
 }
 
-.hero-actions{
+.actions{
     display:flex;
     justify-content:center;
     gap:10px;
@@ -243,29 +214,27 @@ a{
 }
 
 .btn{
-    border-radius:11px;
     padding:13px 23px;
-
+    border-radius:11px;
     font-size:12px;
     font-weight:800;
-
+    border:1px solid var(--border);
     transition:.25s;
-}
-
-.btn-black{
-    background:#080808;
-    color:white;
-    border:1px solid #080808;
-}
-
-.btn-white{
-    background:white;
-    color:#111;
-    border:1px solid #dedede;
 }
 
 .btn:hover{
     transform:translateY(-3px);
+}
+
+.black{
+    background:#080808;
+    color:white;
+    border-color:#080808;
+}
+
+.white{
+    background:white;
+    color:#111;
 }
 
 .scroll{
@@ -273,7 +242,6 @@ a{
     bottom:45px;
     left:50%;
     transform:translateX(-50%);
-
     color:#999;
     font-size:10px;
     letter-spacing:3px;
@@ -289,26 +257,26 @@ a{
 
 .section-head{
     display:flex;
-    align-items:end;
     justify-content:space-between;
+    align-items:end;
     gap:30px;
     margin-bottom:40px;
 }
 
-.section-number{
+.number{
     color:#aaa;
     font-size:11px;
     letter-spacing:2px;
 }
 
-.section-title{
+.title{
     margin-top:8px;
     font-size:clamp(40px,6vw,70px);
     line-height:1;
     letter-spacing:-4px;
 }
 
-.section-description{
+.description{
     max-width:450px;
     color:#888;
     font-size:13px;
@@ -320,20 +288,15 @@ a{
 .about{
     display:grid;
     grid-template-columns:1.1fr .9fr;
-
     min-height:450px;
-
     background:white;
-
-    border:1px solid #dedede;
+    border:1px solid var(--border);
     border-radius:22px;
-
     overflow:hidden;
 }
 
 .about-text{
     padding:60px;
-
     display:flex;
     justify-content:center;
     flex-direction:column;
@@ -355,28 +318,18 @@ a{
 .about p{
     max-width:500px;
     margin-top:18px;
-
     color:#777;
     font-size:13px;
     line-height:2;
 }
 
-.about-buttons{
-    display:flex;
-    gap:9px;
-    margin-top:27px;
-}
-
 .about-visual{
-    position:relative;
-
+    background:#111;
     display:flex;
     align-items:center;
     justify-content:center;
-
+    position:relative;
     overflow:hidden;
-
-    background:#111;
 }
 
 .circle{
@@ -385,31 +338,15 @@ a{
     border-radius:50%;
 }
 
-.c1{
-    width:370px;
-    height:370px;
-}
-
-.c2{
-    width:270px;
-    height:270px;
-}
-
-.c3{
-    width:170px;
-    height:170px;
-}
+.c1{width:370px;height:370px}
+.c2{width:270px;height:270px}
+.c3{width:170px;height:170px}
 
 .visual-logo{
-    position:relative;
-    z-index:2;
-
-    color:white;
-
+    color:#fff;
     font-size:120px;
     font-weight:900;
-
-    letter-spacing:-10px;
+    position:relative;
 }
 
 /* STATS */
@@ -422,18 +359,10 @@ a{
 }
 
 .stat{
-    padding:25px;
-
     background:white;
-
-    border:1px solid #dedede;
+    border:1px solid var(--border);
     border-radius:17px;
-
-    transition:.25s;
-}
-
-.stat:hover{
-    transform:translateY(-5px);
+    padding:25px;
 }
 
 .stat-value{
@@ -442,9 +371,60 @@ a{
 }
 
 .stat-label{
-    margin-top:3px;
     color:#888;
     font-size:11px;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.service{
+    min-height:240px;
+    padding:30px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    transition:.3s;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 50px rgba(0,0,0,.06);
+}
+
+.service-number{
+    color:#aaa;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.service-icon{
+    width:50px;
+    height:50px;
+    margin-top:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:#111;
+    color:white;
+}
+
+.service h3{
+    margin-top:18px;
+    font-size:24px;
+}
+
+.service p{
+    margin-top:10px;
+    color:#888;
+    font-size:12px;
+    line-height:2;
 }
 
 /* DEVELOPERS */
@@ -456,115 +436,30 @@ a{
 }
 
 .developer{
+    position:relative;
     padding:25px;
-
     background:white;
-
-    border:1px solid #dedede;
+    border:1px solid var(--border);
     border-radius:19px;
-
+    overflow:hidden;
     transition:.3s;
 }
 
 .developer:hover{
     transform:translateY(-6px);
-    box-shadow:0 20px 45px rgba(0,0,0,.06);
 }
 
 .avatar{
     width:60px;
     height:60px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:50%;
-
     background:#111;
     color:white;
-
-    font-size:19px;
     font-weight:900;
-}
-
-/* المؤسسون */
-
-.founder{
-    border:1px solid rgba(218,165,32,.55);
-    background:linear-gradient(
-        145deg,
-        #fff,
-        #fffaf0
-    );
-}
-
-.founder .avatar{
-    background:linear-gradient(
-        135deg,
-        #fff0a3,
-        #d4af37,
-        #8a6500,
-        #ffd95a,
-        #b8860b
-    );
-
-    background-size:300% 300%;
-
-    animation:goldShine 3s ease infinite;
-
-    color:#111;
-
-    box-shadow:
-        0 0 15px rgba(212,175,55,.3),
-        0 0 35px rgba(212,175,55,.15);
-}
-
-.founder h3{
-    background:linear-gradient(
-        90deg,
-        #8a6500,
-        #d4af37,
-        #fff0a3,
-        #b8860b
-    );
-
-    background-size:250% auto;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-
-    animation:goldText 3s linear infinite;
-}
-
-.founder-role{
-    color:#b8860b !important;
-    font-weight:800;
-}
-
-@keyframes goldShine{
-    0%{
-        background-position:0% 50%;
-    }
-
-    50%{
-        background-position:100% 50%;
-    }
-
-    100%{
-        background-position:0% 50%;
-    }
-}
-
-@keyframes goldText{
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:250% center;
-    }
+    font-size:20px;
 }
 
 .developer h3{
@@ -574,233 +469,211 @@ a{
     font-size:15px;
 }
 
-.developer-role{
+.role{
     display:block;
     color:#888;
     font-size:11px;
     margin-top:4px;
 }
 
-.copy-btn{
-    width:100%;
+/* FOUNDERS GOLD */
 
-    margin-top:18px;
-    padding:10px;
-
-    background:#f5f5f5;
-    color:#111;
-
-    border:1px solid #dedede;
-    border-radius:9px;
-
-    font-size:11px;
+.founder{
+    border-color:#c99a32;
+    box-shadow:
+        0 0 20px rgba(215,168,62,.12),
+        inset 0 0 30px rgba(215,168,62,.04);
 }
 
-.copy-btn:hover{
-    background:#111;
-    color:white;
+.founder .avatar{
+    background:linear-gradient(135deg,#8d671d,#f3d477,#9d741f);
+    color:#17110a;
+    box-shadow:0 0 25px rgba(215,168,62,.35);
+}
+
+.founder .role{
+    color:#b18120;
+    font-weight:800;
+}
+
+.founder::after{
+    content:"";
+    position:absolute;
+    top:-100%;
+    left:-50%;
+    width:35%;
+    height:300%;
+    transform:rotate(25deg);
+    background:linear-gradient(
+        transparent,
+        rgba(255,255,255,.7),
+        transparent
+    );
+    animation:shine 3s infinite;
+}
+
+@keyframes shine{
+    0%{left:-50%}
+    60%,100%{left:150%}
 }
 
 /* DISCORD */
 
 .discord{
-    position:relative;
-    overflow:hidden;
-
-    text-align:center;
-
     padding:100px 25px;
-
     background:#111;
-
     border-radius:26px;
-}
-
-.discord-content{
-    position:relative;
-    z-index:2;
+    text-align:center;
 }
 
 .discord h2{
     color:white;
-
     font-size:clamp(40px,6vw,75px);
-    line-height:1;
-    letter-spacing:-5px;
 }
 
 .discord p{
     max-width:570px;
     margin:20px auto 28px;
-
     color:#999;
-
     font-size:13px;
-    line-height:1.9;
 }
 
-/* ADMIN INFO */
-
-.admin-panel{
-    display:none;
-
-    margin-top:25px;
-
-    padding:25px;
-
-    background:#111;
-    color:white;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    animation:fadeUp .5s ease;
-}
-
-.admin-panel.show{
-    display:block;
-}
-
-.member-number{
-    font-size:42px;
-    font-weight:900;
-    margin-top:5px;
-}
-
-.member-label{
-    color:#999;
-    font-size:12px;
-}
-
-/* WELCOME */
-
-.welcome-box{
-    display:none;
-
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.65);
-    backdrop-filter:blur(8px);
-
-    z-index:5000;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-}
-
-.welcome-box.show{
-    display:flex;
-}
-
-.welcome-card{
-    width:min(500px,100%);
-
+.discord .black{
     background:white;
-
-    border-radius:24px;
-
-    padding:35px;
-
-    text-align:center;
-
-    box-shadow:0 30px 80px rgba(0,0,0,.25);
-
-    animation:welcomeIn .4s ease;
-}
-
-.welcome-card h2{
-    font-size:30px;
-    font-weight:900;
-}
-
-.welcome-card p{
-    color:#777;
-    font-size:13px;
-    line-height:2;
-    margin-top:12px;
-}
-
-.welcome-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:25px;
-}
-
-.welcome-buttons button{
-    flex:1;
-}
-
-@keyframes welcomeIn{
-    from{
-        opacity:0;
-        transform:translateY(25px) scale(.96);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-/* TOAST */
-
-.toast{
-    position:fixed;
-
-    bottom:25px;
-    left:50%;
-
-    transform:translate(-50%,30px);
-
-    padding:12px 18px;
-
-    border-radius:11px;
-
-    background:#080808;
-    color:white;
-
-    font-size:11px;
-    font-weight:800;
-
-    opacity:0;
-    pointer-events:none;
-
-    transition:.25s;
-
-    z-index:9999;
-}
-
-.toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
+    color:#000;
 }
 
 /* FOOTER */
 
 .footer{
     width:min(1180px,calc(100% - 30px));
-
     margin:auto;
     padding:30px 0 45px;
-
-    border-top:1px solid #dedede;
-
+    border-top:1px solid var(--border);
     display:flex;
-    align-items:center;
     justify-content:space-between;
-
     color:#999;
     font-size:11px;
 }
 
-.footer-logo{
-    color:#222;
-    font-weight:900;
-    letter-spacing:3px;
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:5000;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(480px,100%);
+    background:white;
+    border-radius:22px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.modal-box h2{
+    font-size:28px;
+}
+
+.modal-box p{
+    margin-top:12px;
+    color:#777;
+    font-size:13px;
+    line-height:2;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.modal-buttons button{
+    flex:1;
+}
+
+/* USER */
+
+.user-box{
+    display:none;
+    align-items:center;
+    gap:9px;
+    padding:5px 9px 5px 5px;
+    background:#eee;
+    border-radius:30px;
+}
+
+.user-box.show{
+    display:flex;
+}
+
+.user-avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.user-name{
+    font-size:11px;
+    font-weight:800;
+}
+
+.logout{
+    border:0;
+    background:#111;
+    color:white;
+    border-radius:8px;
+    padding:6px 9px;
+    font-size:10px;
+}
+
+/* LANGUAGE */
+
+.lang-btn{
+    border:1px solid var(--border);
+    background:white;
+    padding:8px 11px;
+    border-radius:9px;
+    font-size:11px;
+    font-weight:800;
+    margin-left:6px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,30px);
+    padding:12px 18px;
+    background:#080808;
+    color:white;
+    border-radius:11px;
+    font-size:11px;
+    font-weight:800;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    z-index:9999;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
 }
 
 /* MOBILE */
@@ -826,69 +699,50 @@ a{
     .stats{
         grid-template-columns:repeat(2,1fr);
     }
-
-    .section-head{
-        display:block;
-    }
-
-    .section-description{
-        margin-top:18px;
-    }
 }
 
-@media(max-width:520px){
-
-    .navbar{
-        height:60px;
-    }
-
-    .hero{
-        min-height:720px;
-        padding-top:130px;
-    }
+@media(max-width:600px){
 
     .hero h1{
         font-size:65px;
         letter-spacing:-5px;
     }
 
-    .hero-actions{
+    .actions{
         flex-direction:column;
     }
 
-    .hero-actions .btn{
+    .actions .btn{
         width:100%;
     }
 
-    .about-text{
-        padding:35px 25px;
+    .section-head{
+        display:block;
     }
 
-    .about-buttons{
-        flex-direction:column;
+    .description{
+        margin-top:18px;
+    }
+
+    .services{
+        grid-template-columns:1fr;
     }
 
     .developers{
         grid-template-columns:1fr;
     }
 
-    .stats{
-        grid-template-columns:1fr 1fr;
+    .about-text{
+        padding:35px 25px;
     }
 
     .footer{
         flex-direction:column;
-        align-items:flex-start;
         gap:10px;
     }
 
-    .nav-actions{
-        gap:4px;
-    }
-
-    .lang-btn,
-    .login-btn{
-        padding:8px 10px;
+    .user-name{
+        display:none;
     }
 }
 </style>
@@ -902,46 +756,45 @@ a{
     <div class="glow two"></div>
 </div>
 
-<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
 
-<nav class="navbar">
-
-    <div class="logo">
-        RAVOXN
-    </div>
+    <div class="logo">RAVOXN</div>
 
     <div class="nav-links">
-        <a href="#الرئيسية">الرئيسية</a>
-        <a href="#عن">عن RAVOXN</a>
-        <a href="#ماذا-نقدم">ماذا نقدم</a>
-        <a href="#المطورون">المطورون</a>
+        <a href="#home">الرئيسية</a>
+        <a href="#about">عن RAVOXN</a>
+        <a href="#services">ماذا نقدم</a>
+        <a href="#developers">المطورون</a>
     </div>
 
-    <div class="nav-actions">
+    <div style="display:flex;align-items:center">
 
-        <button
-            class="lang-btn"
-            onclick="changeLanguage()"
-            id="languageButton">
+        <button class="lang-btn" onclick="toggleLanguage()">
             EN
         </button>
 
         <button
             class="login-btn"
-            onclick="loginDiscord()"
-            id="loginButton">
-            تسجيل دخول
+            id="loginButton"
+            onclick="login()">
+            تسجيل الدخول
         </button>
+
+        <div class="user-box" id="userBox">
+            <img class="user-avatar" id="userAvatar">
+            <span class="user-name" id="userName"></span>
+            <button class="logout" onclick="logout()">
+                خروج
+            </button>
+        </div>
 
     </div>
 
 </nav>
 
-<!-- HERO -->
+<header class="hero" id="home">
 
-<header class="hero" id="الرئيسية">
-
-    <div class="hero-content">
+    <div>
 
         <div class="badge">
             <span class="badge-dot"></span>
@@ -959,17 +812,17 @@ a{
             بأفكار جديدة وتصميم بسيط وتجربة مختلفة.
         </p>
 
-        <div class="hero-actions">
+        <div class="actions">
 
             <button
-                class="btn btn-black"
-                onclick="openWelcome()">
-                نعم، ألعب
+                class="btn black"
+                onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+                اكتشف ما نقدمه
             </button>
 
             <button
-                class="btn btn-white"
-                onclick="scrollToId('عن')">
+                class="btn white"
+                onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
                 عن RAVOXN
             </button>
 
@@ -983,25 +836,16 @@ a{
 
 </header>
 
-<!-- ABOUT -->
-
-<section class="section" id="عن">
+<section class="section" id="about">
 
     <div class="section-head">
 
         <div>
-
-            <div class="section-number">
-                01 / RAVOXN
-            </div>
-
-            <h2 class="section-title">
-                الفكرة قبل كل شيء.
-            </h2>
-
+            <div class="number">01 / RAVOXN</div>
+            <h2 class="title">الفكرة قبل كل شيء.</h2>
         </div>
 
-        <p class="section-description">
+        <p class="description">
             لا نريد أن نصنع مشروعًا يعمل فقط،
             نريد أن نصنع تجربة يتذكرها الشخص.
         </p>
@@ -1026,22 +870,6 @@ a{
                 والتجارب الرقمية. كل مشروع يبدأ بفكرة،
                 ثم نحاول تحويلها إلى شيء أكبر.
             </p>
-
-            <div class="about-buttons">
-
-                <button
-                    class="btn btn-black"
-                    onclick="scrollToId('ماذا-نقدم')">
-                    ماذا نقدم؟
-                </button>
-
-                <button
-                    class="btn btn-white"
-                    onclick="loginDiscord()">
-                    المجتمع
-                </button>
-
-            </div>
 
         </div>
 
@@ -1083,134 +911,80 @@ a{
 
     </div>
 
-    <!-- يظهر فقط للحسابين المحددين -->
-
-    <div class="admin-panel" id="adminPanel">
-
-        <div class="member-label">
-            أعضاء قطاع RAVOXN
-        </div>
-
-        <div
-            class="member-number"
-            id="memberCount">
-            ...
-        </div>
-
-        <div class="member-label">
-            عدد الأعضاء الحالي
-        </div>
-
-    </div>
-
 </section>
 
-<!-- SERVICES -->
-
-<section class="section" id="ماذا-نقدم">
+<section class="section" id="services">
 
     <div class="section-head">
 
         <div>
-
-            <div class="section-number">
-                02 / ماذا نقدم
-            </div>
-
-            <h2 class="section-title">
-                ماذا نقدم؟
-            </h2>
-
+            <div class="number">02 / ماذا نقدم</div>
+            <h2 class="title">ماذا نقدم؟</h2>
         </div>
 
-        <p class="section-description">
+        <p class="description">
             نحول الأفكار إلى تجارب رقمية ونبني
             الألعاب والمواقع والأنظمة بطريقة مختلفة.
         </p>
 
     </div>
 
-    <div class="developers">
+    <div class="services">
 
-        <div class="developer">
-
-            <div class="avatar">
-                ◆
-            </div>
-
+        <div class="service">
+            <div class="service-number">01 / GAMES</div>
+            <div class="service-icon">◆</div>
             <h3>تطوير الألعاب</h3>
-
-            <span class="developer-role">
-                GAMES
-            </span>
-
+            <p>
+                تطوير ألعاب وتجارب تفاعلية مع أنظمة
+                مخصصة واهتمام بتجربة اللاعب.
+            </p>
         </div>
 
-        <div class="developer">
-
-            <div class="avatar">
-                ◈
-            </div>
-
+        <div class="service">
+            <div class="service-number">02 / SYSTEMS</div>
+            <div class="service-icon">◈</div>
             <h3>تطوير الأنظمة</h3>
-
-            <span class="developer-role">
-                SYSTEMS
-            </span>
-
+            <p>
+                أنظمة متقدمة ومترابطة تساعد المشاريع
+                على العمل بشكل منظم وقابل للتطوير.
+            </p>
         </div>
 
-        <div class="developer">
-
-            <div class="avatar">
-                ◇
-            </div>
-
+        <div class="service">
+            <div class="service-number">03 / WEB</div>
+            <div class="service-icon">◇</div>
             <h3>تطوير المواقع</h3>
-
-            <span class="developer-role">
-                WEB
-            </span>
-
+            <p>
+                مواقع حديثة وسريعة بواجهات واضحة
+                وتجربة استخدام مرتبة.
+            </p>
         </div>
 
-        <div class="developer">
-
-            <div class="avatar">
-                +
-            </div>
-
+        <div class="service">
+            <div class="service-number">04 / DIGITAL</div>
+            <div class="service-icon">+</div>
             <h3>التجارب الرقمية</h3>
-
-            <span class="developer-role">
-                DIGITAL
-            </span>
-
+            <p>
+                نحول الأفكار الجديدة إلى تجارب تجمع
+                بين التصميم والبرمجة والإبداع.
+            </p>
         </div>
 
     </div>
 
 </section>
 
-<!-- DEVELOPERS -->
-
-<section class="section" id="المطورون">
+<section class="section" id="developers">
 
     <div class="section-head">
 
         <div>
-
-            <div class="section-number">
-                03 / الفريق
-            </div>
-
-            <h2 class="section-title">
-                المطورون.
-            </h2>
-
+            <div class="number">03 / الفريق</div>
+            <h2 class="title">المطورون.</h2>
         </div>
 
-        <p class="section-description">
+        <p class="description">
             الفريق الذي يعمل على تحويل أفكار
             RAVOXN إلى مشاريع حقيقية.
         </p>
@@ -1219,132 +993,88 @@ a{
 
     <div class="developers">
 
-        <!-- FOUNDER -->
+        <!-- المؤسسين -->
 
         <div class="developer founder">
 
-            <div class="avatar">
-                Z
-            </div>
+            <div class="avatar">Z</div>
 
             <h3>z7xq</h3>
 
-            <span class="developer-role founder-role">
+            <span class="role">
                 المؤسس والمطور
             </span>
 
-            <button
-                class="copy-btn"
-                onclick="copyUser('z7xq')">
-                نسخ Discord
-            </button>
-
         </div>
-
-        <!-- FOUNDER -->
 
         <div class="developer founder">
 
-            <div class="avatar">
-                R
-            </div>
+            <div class="avatar">9</div>
 
             <h3>9.iji</h3>
 
-            <span class="developer-role founder-role">
+            <span class="role">
                 المؤسس والمطور
             </span>
 
-            <button
-                class="copy-btn"
-                onclick="copyUser('9.iji')">
-                نسخ Discord
-            </button>
-
         </div>
 
-        <!-- DEVELOPER -->
+        <!-- المطورين -->
 
         <div class="developer">
 
-            <div class="avatar">
-                H
-            </div>
+            <div class="avatar">H</div>
 
             <h3>hamza_2011hh</h3>
 
-            <span class="developer-role">
+            <span class="role">
                 مطور
             </span>
-
-            <button
-                class="copy-btn"
-                onclick="copyUser('hamza_2011hh')">
-                نسخ Discord
-            </button>
 
         </div>
 
-        <!-- DEVELOPER -->
-
         <div class="developer">
 
-            <div class="avatar">
-                H
-            </div>
+            <div class="avatar">H</div>
 
             <h3>halaath9</h3>
 
-            <span class="developer-role">
+            <span class="role">
                 مطور
             </span>
-
-            <button
-                class="copy-btn"
-                onclick="copyUser('halaath9')">
-                نسخ Discord
-            </button>
 
         </div>
 
     </div>
 
 </section>
-
-<!-- DISCORD -->
 
 <section class="section">
 
     <div class="discord">
 
-        <div class="discord-content">
+        <h2>
+            كن جزءًا من الفكرة.
+        </h2>
 
-            <h2>
-                كن جزءًا من الفكرة.
-            </h2>
+        <p>
+            انضم إلى مجتمع RAVOXN وتابع
+            المشاريع والتحديثات وكل شيء جديد.
+        </p>
 
-            <p>
-                انضم إلى مجتمع RAVOXN وتابع
-                المشاريع والتحديثات وكل شيء جديد.
-            </p>
-
-            <button
-                class="btn btn-black"
-                onclick="loginDiscord()">
-                دخول سيرفر Discord
-            </button>
-
-        </div>
+        <button
+            class="btn black"
+            onclick="joinDiscord()">
+            دخول سيرفر Discord
+        </button>
 
     </div>
 
 </section>
 
-<!-- FOOTER -->
-
 <footer class="footer">
 
-    <div class="footer-logo">
+    <div style="font-weight:900;letter-spacing:3px">
         RAVOXN
     </div>
 
@@ -1354,31 +1084,31 @@ a{
 
 </footer>
 
-<!-- WELCOME -->
+<!-- ترحيب -->
 
-<div class="welcome-box" id="welcomeBox">
+<div class="modal" id="welcomeModal">
 
-    <div class="welcome-card">
+    <div class="modal-box">
 
         <h2 id="welcomeTitle">
-            أهلاً بك في RAVOXN
+            أهلًا بك في RAVOXN
         </h2>
 
         <p id="welcomeText">
-            هل أنت مستعد للدخول وتجربة قطاع RAVOXN؟
+            هل تريد الدخول إلى قطاع RAVOXN؟
         </p>
 
-        <div class="welcome-buttons">
+        <div class="modal-buttons">
 
             <button
-                class="btn btn-black"
-                onclick="yesPlay()">
+                class="btn black"
+                onclick="yesJoin()">
                 نعم، ألعب
             </button>
 
             <button
-                class="btn btn-white"
-                onclick="noPlay()">
+                class="btn white"
+                onclick="noJoin()">
                 لا، ما ألعب
             </button>
 
@@ -1388,235 +1118,93 @@ a{
 
 </div>
 
-<div class="toast" id="toast">
-    تم النسخ
+<!-- رسالة لا -->
+
+<div class="modal" id="whyModal">
+
+    <div class="modal-box">
+
+        <h2>
+            ليش ما تدخل؟
+        </h2>
+
+        <p>
+            RAVOXN مو مجرد لعبة؛
+            هو مجتمع وتجارب ومشاريع نشتغل عليها مع بعض.
+        </p>
+
+        <p style="margin-top:15px;font-weight:800;color:#111">
+            لماذا لا تدخل قطاع RAVOXN؟
+        </p>
+
+        <button
+            class="btn black"
+            style="margin-top:20px;width:100%"
+            onclick="closeWhy()">
+            العودة
+        </button>
+
+    </div>
+
 </div>
+
+<div class="toast" id="toast"></div>
 
 <script>
 
 /* =========================
-   إعدادات
+   WORKER
 ========================= */
 
 const WORKER_URL =
     "https://ravoxn-auth.mty2299.workers.dev";
 
+
+/* =========================
+   DISCORD
+========================= */
+
 const DISCORD_SERVER =
     "https://discord.gg/jZ4UegK3c";
 
-/* الحسابان المسموح لهما برؤية عدد الأعضاء */
 
-const SPECIAL_USERS = [
+/* الأشخاص المسموح لهم بمشاهدة العدد */
+
+const ALLOWED_VIEWERS = [
     "1409043694773862475",
     "1453490600086081646"
 ];
 
+
 /* =========================
-   تسجيل الدخول
+   LOGIN
 ========================= */
 
-function loginDiscord(){
+function login(){
 
     window.location.href =
         WORKER_URL + "/login";
 
 }
 
-/* =========================
-   الترحيب
-========================= */
-
-function openWelcome(){
-
-    document
-        .getElementById("welcomeBox")
-        .classList.add("show");
-
-}
-
-function yesPlay(){
-
-    document
-        .getElementById("welcomeTitle")
-        .textContent =
-        "ممتاز 👑";
-
-    document
-        .getElementById("welcomeText")
-        .textContent =
-        "إذا كنت تلعب، فلماذا لا تدخل قطاع RAVOXN؟";
-
-    document
-        .querySelector(".welcome-buttons")
-        .innerHTML = `
-
-            <button
-                class="btn btn-black"
-                onclick="joinDiscord()">
-                دخول قطاع RAVOXN
-            </button>
-
-            <button
-                class="btn btn-white"
-                onclick="closeWelcome()">
-                إغلاق
-            </button>
-
-        `;
-
-}
-
-function noPlay(){
-
-    document
-        .getElementById("welcomeTitle")
-        .textContent =
-        "تمام";
-
-    document
-        .getElementById("welcomeText")
-        .textContent =
-        "لكن لماذا لا تدخل قطاع RAVOXN؟ يمكن أن تجد شيئًا يناسبك هناك.";
-
-    document
-        .querySelector(".welcome-buttons")
-        .innerHTML = `
-
-            <button
-                class="btn btn-black"
-                onclick="joinDiscord()">
-                لماذا لا تدخل قطاع RAVOXN؟
-            </button>
-
-            <button
-                class="btn btn-white"
-                onclick="closeWelcome()">
-                إغلاق
-            </button>
-
-        `;
-
-}
-
-function closeWelcome(){
-
-    document
-        .getElementById("welcomeBox")
-        .classList.remove("show");
-
-}
-
-function joinDiscord(){
-
-    window.open(
-        DISCORD_SERVER,
-        "_blank"
-    );
-
-}
 
 /* =========================
-   الانتقال
+   LOGOUT
 ========================= */
 
-function scrollToId(id){
+function logout(){
 
-    const element =
-        document.getElementById(id);
-
-    if(!element) return;
-
-    element.scrollIntoView({
-        behavior:"smooth"
-    });
+    window.location.href =
+        WORKER_URL + "/logout";
 
 }
 
-/* =========================
-   نسخ Discord
-========================= */
-
-function copyUser(username){
-
-    navigator.clipboard
-        .writeText(username)
-        .then(() => {
-
-            showToast(
-                "تم نسخ " + username
-            );
-
-        })
-        .catch(() => {
-
-            showToast(username);
-
-        });
-
-}
 
 /* =========================
-   Toast
+   GET USER
 ========================= */
 
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent =
-        message;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    },2200);
-
-}
-
-/* =========================
-   اللغة
-========================= */
-
-let english = false;
-
-function changeLanguage(){
-
-    english = !english;
-
-    const button =
-        document.getElementById("languageButton");
-
-    if(english){
-
-        button.textContent = "AR";
-
-        document.documentElement.lang = "en";
-        document.documentElement.dir = "ltr";
-
-        showToast("English mode");
-
-    }else{
-
-        button.textContent = "EN";
-
-        document.documentElement.lang = "ar";
-        document.documentElement.dir = "rtl";
-
-        showToast("تم تغيير اللغة للعربية");
-
-    }
-
-}
-
-/* =========================
-   فحص المستخدم
-========================= */
-
-async function checkUser(){
+async function checkLogin(){
 
     try{
 
@@ -1628,110 +1216,297 @@ async function checkUser(){
                 }
             );
 
-        if(!response.ok){
-            return;
-        }
-
         const data =
             await response.json();
 
-        if(!data.authenticated){
-            return;
+        if(
+            data &&
+            data.authenticated &&
+            data.user
+        ){
+
+            showUser(data.user);
+
+            return data.user;
+
         }
 
-        const userId =
-            data.user.id;
+    }catch(error){
 
-        document
-            .getElementById("loginButton")
+        console.error(error);
+
+    }
+
+    return null;
+
+}
+
+
+/* =========================
+   SHOW USER
+========================= */
+
+function showUser(user){
+
+    document
+        .getElementById("loginButton")
+        .style.display = "none";
+
+    const box =
+        document.getElementById("userBox");
+
+    box.classList.add("show");
+
+    document
+        .getElementById("userName")
+        .textContent =
+            user.username || "Discord User";
+
+    const avatar =
+        document.getElementById("userAvatar");
+
+    if(user.avatar){
+
+        avatar.src =
+            user.avatar;
+
+    }else{
+
+        avatar.style.display = "none";
+
+    }
+
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+function showWelcome(){
+
+    if(
+        localStorage.getItem(
+            "ravoxn_welcome_seen"
+        )
+    ){
+
+        return;
+
+    }
+
+    document
+        .getElementById("welcomeModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   YES
+========================= */
+
+function yesJoin(){
+
+    localStorage.setItem(
+        "ravoxn_welcome_seen",
+        "1"
+    );
+
+    document
+        .getElementById("welcomeModal")
+        .classList.remove("show");
+
+    window.open(
+        DISCORD_SERVER,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   NO
+========================= */
+
+function noJoin(){
+
+    document
+        .getElementById("welcomeModal")
+        .classList.remove("show");
+
+    document
+        .getElementById("whyModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   CLOSE WHY
+========================= */
+
+function closeWhy(){
+
+    document
+        .getElementById("whyModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================
+   DISCORD
+========================= */
+
+function joinDiscord(){
+
+    window.open(
+        DISCORD_SERVER,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+let english = false;
+
+function toggleLanguage(){
+
+    english = !english;
+
+    const button =
+        document.querySelector(".lang-btn");
+
+    if(english){
+
+        button.textContent = "AR";
+
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        document.querySelector(".hero-subtitle strong")
             .textContent =
-            data.user.username || "Discord";
+            "We create ideas. We build experiences.";
+
+        document.querySelector(".hero-description")
+            .textContent =
+            "We develop games, websites, systems and digital experiences with fresh ideas and a clean approach.";
+
+        document.querySelector(".about-label")
+            .textContent =
+            "RAVOXN STUDIO";
+
+        document.querySelector("#services .title")
+            .textContent =
+            "What we offer";
+
+    }else{
+
+        location.reload();
+
+    }
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message){
+
+    const element =
+        document.getElementById("toast");
+
+    element.textContent =
+        message;
+
+    element.classList.add("show");
+
+    setTimeout(
+        () =>
+            element.classList.remove("show"),
+        2200
+    );
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const nav =
+            document.getElementById("navbar");
+
+        if(window.scrollY > 60){
+
+            nav.classList.add("scrolled");
+
+        }else{
+
+            nav.classList.remove("scrolled");
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        const user =
+            await checkLogin();
 
         /*
-           عدد الأعضاء يظهر فقط
-           للحسابين المحددين
+         نعرض الترحيب بعد تحميل الصفحة.
+        */
+
+        setTimeout(
+            showWelcome,
+            700
+        );
+
+        /*
+         إذا كان أحد الشخصين المحددين
+         سيتم التعامل معه كمستخدم خاص.
         */
 
         if(
-            SPECIAL_USERS.includes(
-                String(userId)
-            )
+            user &&
+            ALLOWED_VIEWERS.includes(user.id)
         ){
 
-            document
-                .getElementById("adminPanel")
-                .classList.add("show");
-
-            loadMemberCount();
-
-        }
-
-    }catch(error){
-
-        console.log(
-            "Login check failed:",
-            error
-        );
-
-    }
-
-}
-
-/* =========================
-   عدد الأعضاء
-========================= */
-
-async function loadMemberCount(){
-
-    try{
-
-        const response =
-            await fetch(
-                WORKER_URL + "/api/stats",
-                {
-                    credentials:"include"
-                }
+            console.log(
+                "RAVOXN privileged viewer:",
+                user.id
             );
 
-        if(!response.ok){
-            return;
         }
-
-        const data =
-            await response.json();
-
-        if(
-            typeof data.memberCount !==
-            "undefined"
-        ){
-
-            document
-                .getElementById("memberCount")
-                .textContent =
-                Number(
-                    data.memberCount
-                ).toLocaleString();
-
-        }
-
-    }catch(error){
-
-        console.log(
-            "Member count error:",
-            error
-        );
 
     }
-
-}
-
-/* =========================
-   تشغيل
-========================= */
-
-checkUser();
+);
 
 </script>
 
 </body>
 </html>
+```
